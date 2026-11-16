@@ -21,7 +21,8 @@
 }
 
 /* Testata compatta, senza immagine */
-.ipcs {
+/* Bootstrap viene caricato dopo questo file: serve piu specificita di .bg-light e .p-4 */
+.container-fluid .ipcs.bg-light.p-4 {
 	background-image: none !important;
 	background-color: var(--wc-hero) !important;
 	padding: 0.75rem 1.25rem !important;
