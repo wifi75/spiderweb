@@ -904,7 +904,8 @@ html[data-bs-theme="light"] .wc-flag .fi {
 
 /* nominativi e icone sempre su una riga */
 #spotsTable tbody td:nth-child(1),
-#spotsTable tbody td:nth-child(4) {
+#spotsTable tbody td:nth-child(4),
+#spotsTable tbody td:nth-child(6) {
 	white-space: nowrap;
 }
 
