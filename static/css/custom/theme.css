@@ -514,7 +514,7 @@ html[data-bs-theme="light"] .img-flag {
 	justify-content: center;
 	width: 92px;
 	height: 92px;
-	margin: -12px 0;
+	margin: -12px 46px -12px 0; /* il 46px a destra la sposta verso sinistra, lontano dal pulsante */
 	background: #e8590c;
 	color: #3a1a00;
 	text-align: center;
@@ -619,7 +619,7 @@ html[data-bs-theme="light"] .img-flag {
 	.wc-promo-new {
 		width: 76px;
 		height: 76px;
-		margin: -10px 0;
+		margin: -10px 14px -10px 0;
 		font-size: 0.58rem;
 	}
 
