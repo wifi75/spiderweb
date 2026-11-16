@@ -146,8 +146,8 @@ def spotquery(parameters):
             # find the country in prefix table
             search_prefix = pfxt.find(main_result["dx"])
             # merge recordset and contry prefix
-            main_result["country"] = search_prefix["country"]
-            main_result["iso"] = search_prefix["iso"]
+            main_result["country"] = search_prefix.get("country", "unknown country")
+            main_result["iso"] = search_prefix.get("iso", "xx")
 
             payload.append({**main_result})
 

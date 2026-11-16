@@ -174,20 +174,34 @@ def load_country():
 # -------------------------------------------------------------------------------------
 #  search for ISO code, transcoding the country description
 # -------------------------------------------------------------------------------------
+#  Names that country-files.com renamed over time: the key is the new name found in
+#  cty.dat, the value is the name used in cfg/country.json
+COUNTRY_ALIASES = {
+    "CABO VERDE": "CAPE VERDE",
+}
+
+
 def add_country(table):
     country_data = load_country()
+    missing = set()
     for key, value in table.items():
         found = 0
+        wanted = value["country"].upper()
+        wanted = COUNTRY_ALIASES.get(wanted, wanted)
         for i in country_data["country_codes"]:
-            if i["desc"].upper() == value["country"].upper():
+            if i["desc"].upper() == wanted:
                 value["iso"] = i["ISO"]
                 value["wpx"] = i["WPX"]
                 found = 1
                 break
         if found == 0:
-            logging.warning(
-                'country "' + value["country"] + '" not found in cfg/country.json'
-            )
+            # fallback: the entry must always have these keys, otherwise the
+            # spots query fails for every spot of that country
+            value["iso"] = "xx"
+            value["wpx"] = ""
+            missing.add(value["country"])
+    for name in sorted(missing):
+        logging.warning('country "' + name + '" not found in cfg/country.json')
     return
 
 
