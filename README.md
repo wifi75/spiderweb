@@ -7,6 +7,8 @@
 [![made-with-javascript](https://img.shields.io/badge/F.e.-JavaScript-yellow)](https://www.javascript.com)
 [![bootstrap](https://img.shields.io/badge/CSS%20Fwk-Bootstrap-purple)](https://getbootstrap.com/)
 [![CodeFactor](https://www.codefactor.io/repository/github/coulisse/spiderweb/badge/development)](https://www.codefactor.io/repository/github/coulisse/spiderweb/overview/development)
+[![Fork](https://img.shields.io/badge/Fork-wifi75%2Fspiderweb-181717?logo=github&logoColor=white)](docs/FORK.md)
+[![Maintenance](https://img.shields.io/badge/Mantenuto-s%C3%AC%20(2026)-brightgreen)](docs/FORK.md)
 
 
 - **Release:** v2.5.8
@@ -14,6 +16,9 @@
 - **Mail:** <corrado.gerbaldo@gmail.com>
 - **Licensing:** Gpl V3.0 see [LICENSE](LICENSE) file.
 - **Languages:** This application is written in Python 3.13/flask,Javascript and HTML
+
+> **Fork wifi75:** tema chiaro/scuro, 9 lingue, filtri rapidi, colonna Modo, pulsante WebSDR e correzioni al codice originale.
+> Dettagli e procedura di aggiornamento in [docs/FORK.md](docs/FORK.md).
 
 ___
 **DXSpider** is a great DX Cluster software that has useful telnet interface. 

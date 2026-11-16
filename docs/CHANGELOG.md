@@ -1,4 +1,14 @@
 ### Change log
+Date: 16/11/2026
+Release: fork wifi75 (basato su v2.5.8, non ancora numerato)
+
+- Fixed: un paese mancante in `country.json` (es. Cabo Verde) bloccava tutti gli spot - Issue [#106](https://github.com/coulisse/spiderweb/issues/106)
+- Fixed: timeout sull'attesa del prompt telnet - Issue [#78](https://github.com/coulisse/spiderweb/issues/78)
+- Fixed: bandiere di Macedonia del Nord e RD Congo
+- Added: tema chiaro/scuro, 9 lingue con scelta automatica, filtri rapidi, ricerca nel testo e filtri ricordati ([#26](https://github.com/coulisse/spiderweb/issues/26), [#83](https://github.com/coulisse/spiderweb/issues/83))
+- Added: colonna Modo con filtro, pulsante WebSDR ([#91](https://github.com/coulisse/spiderweb/issues/91)), bip sui nuovi spot, banner Aurora
+- Dettagli: [FORK.md](FORK.md)
+___
 Date: 25/04/2025                    
 Release: v2.5.8
 
