@@ -1,0 +1,141 @@
+/* Tema personalizzato IU3CYV: caricato dopo style.min.css, non modifica i file originali */
+
+:root {
+	--wc-hero: #1f2a37;
+	--wc-quick-bg: #ffffff;
+	--wc-quick-line: #d8dfe7;
+	--wc-quick-tx: #1b2733;
+	--wc-accent: #0b6fcc;
+	--wc-row-even: #f1f4f7;
+	--wc-row-hover: #e3eaf2;
+}
+
+[data-bs-theme="dark"] {
+	--wc-hero: #131c26;
+	--wc-quick-bg: #16212d;
+	--wc-quick-line: #243446;
+	--wc-quick-tx: #e8eef5;
+	--wc-accent: #2ea8ff;
+	--wc-row-even: #1a2735;
+	--wc-row-hover: #22344a;
+}
+
+/* Testata compatta, senza immagine */
+.ipcs {
+	background-image: none !important;
+	background-color: var(--wc-hero) !important;
+	padding: 0.75rem 1.25rem !important;
+}
+
+.ipcs h1 {
+	font-size: 1.6rem;
+	margin-bottom: 0.1rem;
+}
+
+.ipcs .lead {
+	font-size: 0.95rem;
+	margin-bottom: 0.4rem;
+}
+
+.ipcs p {
+	margin-bottom: 0.15rem;
+	font-size: 0.85rem;
+}
+
+/* Barra dei filtri rapidi */
+.wc-quickbar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	align-items: center;
+	padding: 6px 12px 2px;
+}
+
+.wc-sep {
+	width: 10px;
+}
+
+.wc-pill {
+	background: var(--wc-quick-bg);
+	color: var(--wc-quick-tx);
+	border: 1px solid var(--wc-quick-line);
+	border-radius: 999px;
+	padding: 2px 12px;
+	font-size: 0.85rem;
+	line-height: 1.5;
+	cursor: pointer;
+}
+
+.wc-pill:hover {
+	border-color: var(--wc-accent);
+}
+
+.wc-pill.on {
+	background: var(--wc-accent);
+	border-color: var(--wc-accent);
+	color: #ffffff;
+}
+
+/* Tabella spot */
+#spotsTable {
+	--bs-table-striped-bg: var(--wc-row-even);
+	--bs-table-hover-bg: var(--wc-row-hover);
+}
+
+#spotsTable thead th {
+	font-weight: 500;
+	font-size: 0.8rem;
+	color: var(--bs-secondary-color);
+	border-bottom: 1px solid var(--wc-quick-line);
+}
+
+#spotsTable td {
+	vertical-align: middle;
+}
+
+#collapseFilters {
+	background-color: var(--wc-quick-bg);
+	border: 1px solid var(--wc-quick-line);
+	padding: 10px;
+}
+
+/* Frequenza con colore per banda */
+.wc-band {
+	display: inline-block;
+	min-width: 64px;
+	text-align: center;
+	border-radius: 5px;
+	padding: 2px 6px;
+	font-weight: 500;
+	color: #0b1620;
+	background: #cfd6dd;
+}
+
+.wc-b160 { background: #e8a0a0; }
+.wc-b80 { background: #e8b27a; }
+.wc-b60 { background: #e6c46a; }
+.wc-b40 { background: #e4d467; }
+.wc-b30 { background: #b8d96b; }
+.wc-b20 { background: #f5a524; }
+.wc-b17 { background: #c28cf0; }
+.wc-b15 { background: #4cc3d9; }
+.wc-b12 { background: #6fd3b0; }
+.wc-b10 { background: #7bd36b; }
+.wc-b6 { background: #f08cc0; }
+.wc-bvhf { background: #9db6f0; }
+
+@media screen and (max-width: 768px) {
+	.wc-band {
+		min-width: 46px;
+		font-size: 0.75rem;
+	}
+
+	.wc-quickbar {
+		padding: 6px 8px 2px;
+	}
+}
+
+/* Pulsante tema */
+#wc-theme-toggle {
+	margin-right: 0.5rem;
+}
