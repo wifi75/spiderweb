@@ -6,18 +6,28 @@
 	--wc-quick-line: #d8dfe7;
 	--wc-quick-tx: #1b2733;
 	--wc-accent: #0b6fcc;
-	--wc-row-even: #f1f4f7;
-	--wc-row-hover: #e3eaf2;
+	--wc-row-even: #e9eef4;
+	--wc-row-hover: #d6e2ef;
 }
 
 [data-bs-theme="dark"] {
 	--wc-hero: #131c26;
 	--wc-quick-bg: #16212d;
-	--wc-quick-line: #243446;
+	--wc-quick-line: #2e4259;
 	--wc-quick-tx: #e8eef5;
 	--wc-accent: #2ea8ff;
-	--wc-row-even: #1a2735;
-	--wc-row-hover: #22344a;
+	--wc-row-even: #213448;
+	--wc-row-hover: #31506f;
+}
+
+/* Sfondo scuro proprio: quello di Bootstrap e troppo vicino al colore delle righe */
+html[data-bs-theme="dark"] {
+	--bs-body-bg: #0f1720;
+	--bs-body-bg-rgb: 15, 23, 32;
+}
+
+html[data-bs-theme="dark"] body {
+	background-color: #0f1720;
 }
 
 /* Testata compatta, senza immagine */
