@@ -875,3 +875,23 @@ html[data-bs-theme="light"] .wc-flag .fi {
 .wc-mode { cursor: pointer; }
 .wc-mode:hover { background: var(--wc-row-hover); }
 .wc-quickbar .wc-modechip[hidden] { display: none; }
+
+/* pulsante WebSDR accanto al nominativo DX */
+.wc-websdr {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 26px;
+	height: 26px;
+	margin-left: 6px;
+	border-radius: 50%;
+	color: var(--wc-muted);
+	text-decoration: none;
+	vertical-align: middle;
+	transition: background-color .15s, color .15s;
+}
+.wc-websdr:hover,
+.wc-websdr:focus-visible {
+	background: var(--wc-accent);
+	color: #fff;
+}

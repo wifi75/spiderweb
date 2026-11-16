@@ -40,6 +40,7 @@
 		textfilter: ['Cerca nel testo (es. CQ JA, FT8)', 'Search text (e.g. CQ JA, FT8)', 'Pesquisar texto (ex. CQ JA, FT8)', 'Buscar texto (ej. CQ JA, FT8)', 'Поиск по тексту (напр. CQ JA, FT8)', 'Chercher du texte (ex. CQ JA, FT8)', 'Text suchen (z. B. CQ JA, FT8)', 'テキスト検索 (例: CQ JA, FT8)', '搜索文本 (如 CQ JA, FT8)'],
 		modefilter: ['Clicca per filtrare per questo modo', 'Click to filter by this mode', 'Clique para filtrar por este modo', 'Haz clic para filtrar por este modo', 'Нажмите, чтобы фильтровать по этому виду', 'Cliquer pour filtrer sur ce mode', 'Klicken, um nach diesem Modus zu filtern', 'クリックでこのモードに絞り込み', '点击按此模式筛选'],
 		modefilter_on: ['Modo:', 'Mode:', 'Modo:', 'Modo:', 'Вид:', 'Mode :', 'Modus:', 'モード:', '模式:'],
+		websdr: ['Ascolta su WebSDR', 'Listen on WebSDR', 'Ouvir no WebSDR', 'Escuchar en WebSDR', 'Слушать на WebSDR', 'Écouter sur WebSDR', 'Auf WebSDR hören', 'WebSDRで聴く', '在 WebSDR 上收听'],
 		noft8: ['Senza FT8', 'No FT8', 'Sem FT8', 'Sin FT8', 'Без FT8', 'Sans FT8', 'Ohne FT8', 'FT8を除く', '不含 FT8'],
 		connect: ['Collega il tuo cluster', 'Connect your cluster', 'Conecte o seu cluster', 'Conecta tu cluster', 'Подключить свой кластер', 'Connectez votre cluster', 'Verbinde deinen Cluster', 'あなたのクラスターを接続', '连接你的集群'],
 		telnet_title: ['Accesso telnet', 'Telnet access', 'Acesso telnet', 'Acceso telnet', 'Доступ по telnet', 'Accès telnet', 'Telnet-Zugang', 'Telnetアクセス', 'Telnet 访问'],

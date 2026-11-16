@@ -327,6 +327,30 @@
 		return '';
 	}
 
+	/* collegamento al WebSDR dell'universita di Twente (HF 0-29 MHz), gia sintonizzato su frequenza e modo */
+	var SDR_CW = { CW: 1 };
+	var SDR_USB = { FT8: 1, FT4: 1, JS8: 1, DIGI: 1, PSK: 1, RTTY: 1, WSPR: 1, SSTV: 1 };
+	function addWebSdr(tr, badge) {
+		var cell = tr.children[2];
+		var khz = badge ? parseFreq(badge.textContent) : 0;
+		if (!cell || cell.tagName !== 'TD' || khz < 1800 || khz >= 29000) {
+			return;
+		}
+		var mode = tr.dataset.mode || '';
+		var sdrMode = SDR_CW[mode] ? 'cw' : (SDR_USB[mode] ? 'usb' : (khz < 10000 ? 'lsb' : 'usb'));
+		var a = document.createElement('a');
+		a.className = 'wc-websdr';
+		a.href = 'http://websdr.ewi.utwente.nl:8901/?tune=' + (Math.round(khz * 10) / 10) + sdrMode;
+		a.target = '_blank';
+		a.rel = 'noopener';
+		a.title = L('websdr');
+		a.setAttribute('aria-label', L('websdr'));
+		var ic = document.createElement('i');
+		ic.className = 'bi-headphones';
+		a.appendChild(ic);
+		cell.appendChild(a);
+	}
+
 	function decorateRow(tr) {
 		if (tr.dataset.wc === '1') {
 			return;
@@ -361,6 +385,8 @@
 				break;
 			}
 		}
+
+		addWebSdr(tr, badge);
 
 		var cells = tr.children;
 		var tdCountry = cells[4];
