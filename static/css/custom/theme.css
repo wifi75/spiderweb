@@ -533,6 +533,24 @@ html[data-bs-theme="light"] .img-flag {
 	border-bottom-color: var(--wc-accent) !important;
 }
 
+/* Voce Aurora nel menu: pulsante evidenziato, lo sfondo si illumina al passaggio del mouse */
+.navbar-nav .nav-link.wc-nav-aurora {
+	color: #08121f;
+	background-color: var(--wc-accent);
+	border-radius: 999px;
+	padding: 0.2rem 0.95rem;
+	margin: 0.3rem 0 0.3rem 0.5rem;
+	font-weight: 600;
+	transition: filter 0.12s ease, box-shadow 0.12s ease;
+}
+
+.navbar-nav .nav-link.wc-nav-aurora:hover,
+.navbar-nav .nav-link.wc-nav-aurora:focus-visible {
+	color: #08121f;
+	filter: brightness(1.15);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--wc-accent) 40%, transparent);
+}
+
 /* Le voci del menu in alto restano su una riga */
 .navbar-nav .nav-link {
 	white-space: nowrap;
