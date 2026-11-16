@@ -1,6 +1,6 @@
 ### Change log
 Date: 16/11/2026
-Release: fork wifi75 (basato su v2.5.8, non ancora numerato)
+Release: v2.6.0 (fork wifi75, basato su v2.5.8)
 
 - Fixed: un paese mancante in `country.json` (es. Cabo Verde) bloccava tutti gli spot - Issue [#106](https://github.com/coulisse/spiderweb/issues/106)
 - Fixed: timeout sull'attesa del prompt telnet - Issue [#78](https://github.com/coulisse/spiderweb/issues/78)

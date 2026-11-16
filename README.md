@@ -11,7 +11,7 @@
 [![Maintenance](https://img.shields.io/badge/Mantenuto-s%C3%AC%20(2026)-brightgreen)](docs/FORK.md)
 
 
-- **Release:** v2.5.8
+- **Release:** v2.6.0 (fork wifi75, basato su v2.5.8 di IU1BOW)
 - **Author:** Corrado Gerbaldo - [IU1BOW](https://www.qrz.com/db/IU1BOW)
 - **Mail:** <corrado.gerbaldo@gmail.com>
 - **Licensing:** Gpl V3.0 see [LICENSE](LICENSE) file.
