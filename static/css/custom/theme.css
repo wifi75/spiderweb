@@ -274,6 +274,74 @@ html body {
 	}
 }
 
+/* ---------- Annuncio Aurora: una riga sottile, si puo chiudere ---------- */
+.wc-promo {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0.5rem 0.25rem;
+	padding: 5px 12px;
+	background: var(--wc-surface);
+	border: 1px solid var(--wc-line);
+	border-left: 4px solid var(--wc-accent);
+	border-radius: 8px;
+	font-size: 0.85rem;
+	color: var(--wc-text);
+}
+
+.wc-promo[hidden] {
+	display: none;
+}
+
+.wc-promo-tag {
+	font-weight: 700;
+	color: var(--wc-accent);
+	letter-spacing: 0.3px;
+}
+
+.wc-promo-text {
+	flex: 1;
+	color: var(--wc-muted);
+}
+
+.wc-promo-btn {
+	color: var(--wc-accent);
+	border: 1px solid var(--wc-accent);
+	border-radius: 999px;
+	padding: 1px 12px;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.wc-promo-btn:hover {
+	background: var(--wc-accent);
+	color: #08121f;
+}
+
+.wc-promo-close {
+	background: transparent;
+	border: 0;
+	color: var(--wc-muted);
+	font-size: 1.25rem;
+	line-height: 1;
+	cursor: pointer;
+	padding: 0 4px;
+}
+
+.wc-promo-close:hover {
+	color: var(--wc-text);
+}
+
+@media screen and (max-width: 768px) {
+	.wc-promo-text {
+		display: none;
+	}
+
+	.wc-promo {
+		justify-content: space-between;
+	}
+}
+
 /* ---------- Collegamenti nel piede di pagina ---------- */
 .wc-footer-links {
 	font-size: 0.85rem;

@@ -48,6 +48,126 @@
 		});
 		clock.parentNode.insertBefore(btn, clock);
 		applyTheme(savedTheme());
+		addSoundButton(clock);
+	}
+
+	/* ---------- suono per i nuovi spot ---------- */
+	var SOUND_KEY = 'wc-sound';
+	var audioCtx = null;
+	var quietUntil = 0;
+	var lastBeep = 0;
+
+	function soundOn() {
+		try {
+			return localStorage.getItem(SOUND_KEY) !== 'off';
+		} catch (e) {
+			return true;
+		}
+	}
+
+	function getAudio() {
+		var AC = window.AudioContext || window.webkitAudioContext;
+		if (!AC) {
+			return null;
+		}
+		if (!audioCtx) {
+			try { audioCtx = new AC(); } catch (e) { return null; }
+		}
+		if (audioCtx.state === 'suspended') {
+			audioCtx.resume();
+		}
+		return audioCtx;
+	}
+
+	/* il browser permette l'audio solo dopo un'interazione: lo "sblocchiamo" al primo clic o tocco */
+	function unlockAudio() {
+		getAudio();
+		document.removeEventListener('pointerdown', unlockAudio);
+		document.removeEventListener('keydown', unlockAudio);
+	}
+	document.addEventListener('pointerdown', unlockAudio);
+	document.addEventListener('keydown', unlockAudio);
+
+	/* bip breve e leggero (due note vicine), generato qui: nessun file audio */
+	function playBeep(force) {
+		var now = Date.now();
+		if (!force && (!soundOn() || now < quietUntil || now - lastBeep < 2000)) {
+			return;
+		}
+		var ctx = getAudio();
+		if (!ctx || ctx.state !== 'running') {
+			return;
+		}
+		lastBeep = now;
+		[[880, 0], [1320, 0.09]].forEach(function (n) {
+			var osc = ctx.createOscillator();
+			var gain = ctx.createGain();
+			var t0 = ctx.currentTime + n[1];
+			osc.type = 'sine';
+			osc.frequency.value = n[0];
+			gain.gain.setValueAtTime(0.0001, t0);
+			gain.gain.exponentialRampToValueAtTime(0.05, t0 + 0.01);
+			gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.16);
+			osc.connect(gain);
+			gain.connect(ctx.destination);
+			osc.start(t0);
+			osc.stop(t0 + 0.18);
+		});
+	}
+
+	function setSoundIcon() {
+		var b = document.getElementById('wc-sound-toggle');
+		if (!b) {
+			return;
+		}
+		var on = soundOn();
+		b.firstChild.className = on ? 'bi-volume-up-fill' : 'bi-volume-mute-fill';
+		b.setAttribute('aria-label', on ? 'Disattiva il suono dei nuovi spot' : 'Attiva il suono dei nuovi spot');
+		b.title = on ? 'Suono nuovi spot: acceso' : 'Suono nuovi spot: spento';
+	}
+
+	function addSoundButton(clock) {
+		if (document.getElementById('wc-sound-toggle')) {
+			return;
+		}
+		var btn = document.createElement('button');
+		btn.type = 'button';
+		btn.id = 'wc-sound-toggle';
+		btn.className = 'btn btn-sm btn-outline-secondary';
+		btn.appendChild(document.createElement('i'));
+		btn.addEventListener('click', function () {
+			var next = soundOn() ? 'off' : 'on';
+			try { localStorage.setItem(SOUND_KEY, next); } catch (e) { /* ignora */ }
+			setSoundIcon();
+			if (next === 'on') {
+				playBeep(true);
+			}
+		});
+		clock.parentNode.insertBefore(btn, document.getElementById('wc-theme-toggle'));
+		setSoundIcon();
+	}
+
+	/* ---------- annuncio Aurora (si puo chiudere, riappare dopo 7 giorni) ---------- */
+	function setupPromo() {
+		var promo = document.getElementById('wc-promo');
+		if (!promo) {
+			return;
+		}
+		var KEY = 'wc-promo-hidden-until';
+		try {
+			var until = Number(localStorage.getItem(KEY) || 0);
+			if (until > Date.now()) {
+				promo.hidden = true;
+				return;
+			}
+		} catch (e) { /* mostra comunque */ }
+		var close = promo.querySelector('.wc-promo-close');
+		if (close) {
+			close.addEventListener('click', function () {
+				promo.hidden = true;
+				try { localStorage.setItem(KEY, String(Date.now() + 7 * 24 * 3600 * 1000)); } catch (e) { /* ignora */ }
+			});
+		}
 	}
 
 	/* ---------- nomi dei paesi in italiano ---------- */
@@ -190,6 +310,10 @@
 			for (var i = 0; i < rows.length; i++) {
 				decorateRow(rows[i]);
 			}
+			/* le righe nuove portano la classe table-info: un solo bip per blocco di spot */
+			if (body.querySelector('tr.table-info')) {
+				playBeep(false);
+			}
 			busy = false;
 		});
 		obs.observe(body, { childList: true });
@@ -226,6 +350,7 @@
 		}
 
 		function apply() {
+			quietUntil = Date.now() + 4000; /* cambiando filtro la tabella si ricarica: niente bip */
 			selectOnly(bandSel, state.bands);
 			selectOnly(modeSel, state.modes);
 			var ft8 = document.getElementById('exclft8');
@@ -288,7 +413,9 @@
 
 		var form = document.getElementById('form-filters');
 		if (form) {
+			form.addEventListener('submit', function () { quietUntil = Date.now() + 4000; });
 			form.addEventListener('reset', function () {
+				quietUntil = Date.now() + 4000;
 				state.bands = []; state.modes = []; state.noft8 = false;
 				pills.forEach(function (p) { p.classList.remove('on'); });
 				allPill.classList.add('on');
@@ -300,6 +427,7 @@
 		addThemeButton();
 		buildQuickBar();
 		watchTable();
+		setupPromo();
 	}
 
 	if (document.readyState === 'loading') {
