@@ -411,6 +411,17 @@
 			apply();
 		});
 
+		/* il pulsante imbuto (apre il pannello filtri) va nella stessa riga, dopo "Senza FT8" */
+		var funnel = document.querySelector('button[data-bs-target="#collapseFilters"]');
+		if (funnel) {
+			var oldRow = funnel.closest('.row');
+			funnel.classList.add('wc-funnel');
+			bar.appendChild(funnel);
+			if (oldRow && !oldRow.querySelector('button')) {
+				oldRow.style.display = 'none';
+			}
+		}
+
 		var form = document.getElementById('form-filters');
 		if (form) {
 			form.addEventListener('submit', function () { quietUntil = Date.now() + 4000; });
