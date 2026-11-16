@@ -469,10 +469,11 @@ html[data-bs-theme="light"] .img-flag {
 	line-height: 0;
 }
 
-.wc-promo-logo svg {
+.wc-promo-logo img {
+	display: block;
 	width: 100%;
 	height: 100%;
-	border-radius: 14px;
+	border-radius: 15px;
 	box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
 }
 
