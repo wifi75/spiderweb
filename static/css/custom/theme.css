@@ -160,14 +160,20 @@ html body {
 }
 
 #spotsTable thead th {
-	font-weight: 600;
-	font-size: 0.72rem;
+	font-weight: 700;
+	font-size: 0.95rem;
 	text-transform: uppercase;
-	letter-spacing: 0.6px;
-	color: var(--wc-head);
+	letter-spacing: 0.08em;
+	color: var(--wc-accent);
 	background: transparent;
-	border-bottom: 2px solid var(--wc-line);
-	padding-bottom: 6px;
+	border-bottom: 3px solid var(--wc-accent);
+	padding: 10px 6px 8px;
+	white-space: nowrap;
+}
+
+/* "Paese" occupa bandierina + nome e parte dal bordo della bandierina */
+#spotsTable thead th.wc-th-flag {
+	text-align: left;
 }
 
 #spotsTable td {
