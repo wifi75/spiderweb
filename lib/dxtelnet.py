@@ -58,15 +58,15 @@ async def fetch_who_and_version(host, port, user, password=None):
                 logging.error("Timeout waiting for password prompt")
                 return [], "Login timeout"
 
-        await reader.readuntil(WAIT_FOR)
+        await asyncio.wait_for(reader.readuntil(WAIT_FOR), timeout=20)
         logging.debug("Login successful")
 
         writer.write(b'who\n')
-        who_response = await reader.readuntil(WAIT_FOR)
+        who_response = await asyncio.wait_for(reader.readuntil(WAIT_FOR), timeout=20)
         who_data = who_response.decode('utf-8')
 
         writer.write(b'sh/version\n')
-        version_response = await reader.readuntil(WAIT_FOR)
+        version_response = await asyncio.wait_for(reader.readuntil(WAIT_FOR), timeout=20)
         res = version_response.decode('utf-8').strip().splitlines()
         logging.debug(f"Full SH/VERSION Response:\n{res}")
 
@@ -80,6 +80,8 @@ async def fetch_who_and_version(host, port, user, password=None):
         else:
             logging.debug("No valid DXSpider version found in the response.")
 
+    except asyncio.TimeoutError:
+        logging.error("Timeout waiting for the DXSpider prompt (custom prompt for this user?)")
     except EOFError:
         logging.error("End of buffer reached unexpectedly")
     except Exception as e:
