@@ -628,6 +628,36 @@ html[data-bs-theme="light"] .img-flag {
 	border-bottom-color: var(--wc-accent) !important;
 }
 
+/* ---------- Barra in alto senza sfondo scuro: si fonde con la pagina ---------- */
+header .navbar.bg-dark {
+	background-color: transparent !important;
+	border-bottom: 1px solid var(--wc-line);
+	padding-top: 0.35rem;
+	padding-bottom: 0.35rem;
+}
+
+header .navbar .navbar-brand {
+	color: var(--wc-text);
+	font-weight: 600;
+}
+
+header .navbar #MyClockDisplay,
+header .navbar .text-white-50 {
+	color: var(--wc-muted) !important;
+}
+
+header .navbar .navbar-toggler {
+	border-color: var(--wc-line);
+}
+
+html[data-bs-theme="light"] header .navbar .navbar-toggler-icon {
+	filter: invert(1);
+}
+
+html[data-bs-theme="light"] .wc-flag .fi {
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.28);
+}
+
 /* Voci del menu in alto: tutte pulsanti tondi uguali, ognuna con sfondo e testo propri */
 .navbar-nav .nav-link {
 	--wc-nav-bg: #3a4350;
