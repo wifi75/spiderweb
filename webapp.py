@@ -1,6 +1,7 @@
 __author__ = "IU1BOW - Corrado"
 import flask
 from flask import request, render_template
+from flask import Response
 from flask_wtf.csrf import CSRFProtect
 from flask_minify import minify
 from datetime import datetime
@@ -11,6 +12,7 @@ import logging
 import logging.config
 import asyncio
 import requests
+import os
 import xmltodict
 from lib.dxtelnet import fetch_who_and_version
 from lib.adxo import get_adxo_events
@@ -21,7 +23,7 @@ from lib.qry_builder import query_build, query_build_callsign, query_build_calls
 
 TIMER_VISIT = 1000
 TIMER_ADXO = 12 * 3600
-TIMER_WHO = 7 * 60
+TIMER_WHO = 60
 
 logging.config.fileConfig("cfg/webapp_log_config.ini", disable_existing_loggers=True)
 logger = logging.getLogger(__name__)
@@ -389,10 +391,24 @@ def privacy():
     )
     return response
 
-@app.route("/sitemap.xml")
+@app.route("/robots.txt", methods=["GET","HEAD"])
+def robots():
+    # Served as plain text from ./static/robots.txt (Google-friendly)
+    p = os.path.join(os.path.dirname(__file__), "static", "robots.txt")
+    with open(p, "r", encoding="utf-8") as f:
+        data = f.read()
+    return Response(data, mimetype="text/plain")
+@app.route("/sitemap.xml", methods=["GET","HEAD"])
 def sitemap():
-    return app.send_static_file("sitemap.xml")
-
+    # Served as plain XML from ./static/sitemap.xml (Google-friendly)
+    p = os.path.join(os.path.dirname(__file__), "static", "sitemap.xml")
+    with open(p, "r", encoding="utf-8") as f:
+        data = f.read()
+    return Response(data, mimetype="application/xml")
+@app.route("/google306a558ee6b7e767.html", methods=["GET","HEAD"])
+def google_site_verification():
+    # Google Search Console HTML file verification
+    return app.send_static_file("google306a558ee6b7e767.html")
 
 @app.route("/callsign.html", methods=["GET"])
 def callsign():
@@ -503,10 +519,11 @@ def add_security_headers(resp):
     #resp.headers["Report-To"] = '{"group":"csp-endpoint", "max_age":10886400, "endpoints":[{"url":"/csp-reports"}]}'    
     resp.headers["Content-Security-Policy"] = "\
     default-src 'self';\
-    script-src 'self' cdnjs.cloudflare.com cdn.jsdelivr.net 'nonce-"+inline_script_nonce+"';\
+    script-src 'self' cdnjs.cloudflare.com cdn.jsdelivr.net https://umami.iu3cyv.eu 'nonce-"+inline_script_nonce+"';\
+    script-src-elem 'self' cdnjs.cloudflare.com cdn.jsdelivr.net https://umami.iu3cyv.eu 'nonce-"+inline_script_nonce+"';\
     style-src 'self' cdnjs.cloudflare.com cdn.jsdelivr.net;\
     object-src 'none';base-uri 'self';\
-    connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com sidc.be prop.kc2g.com www.hamqsl.com;\
+    connect-src 'self' https://umami.iu3cyv.eu cdn.jsdelivr.net cdnjs.cloudflare.com sidc.be prop.kc2g.com www.hamqsl.com;\
     font-src 'self' cdn.jsdelivr.net;\
     frame-src 'self';\
     frame-ancestors 'none';\
