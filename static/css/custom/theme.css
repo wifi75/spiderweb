@@ -12,6 +12,8 @@
 	--wc-row-even: #e8eef6;
 	--wc-row-hover: #d3e1f2;
 	--wc-comment: #4a5d73;
+	--wc-new-bg: #cfe5fb;
+	--wc-new-tx: #0b2540;
 }
 
 html[data-bs-theme="dark"] {
@@ -25,6 +27,8 @@ html[data-bs-theme="dark"] {
 	--wc-row-even: #172740;
 	--wc-row-hover: #243d63;
 	--wc-comment: #b4c3da;
+	--wc-new-bg: #1d4a73;
+	--wc-new-tx: #ffffff;
 	--bs-body-bg: #0b1220;
 	--bs-body-bg-rgb: 11, 18, 32;
 	--bs-body-color: #eef3fc;
@@ -189,6 +193,27 @@ html body {
 	color: var(--wc-muted);
 }
 
+/* Spot appena arrivati: Bootstrap li evidenzia con .table-info (azzurro chiaro),
+   qui sostituito con colori leggibili in entrambi i temi */
+#spotsTable tr.table-info {
+	--bs-table-bg: var(--wc-new-bg);
+	--bs-table-bg-type: var(--wc-new-bg);
+	--bs-table-bg-state: var(--wc-new-bg);
+	--bs-table-color: var(--wc-new-tx);
+	--bs-table-color-type: var(--wc-new-tx);
+}
+
+#spotsTable tr.table-info > td,
+#spotsTable tr.table-info > td a,
+#spotsTable tr.table-info > td a i,
+#spotsTable tr.table-info > div {
+	color: var(--wc-new-tx) !important;
+}
+
+#spotsTable tr.table-info > td:first-child {
+	box-shadow: inset 4px 0 0 var(--wc-accent);
+}
+
 #spotsTable mark {
 	background: #ffd84d;
 	color: #1b1b1b;
@@ -247,6 +272,21 @@ html body {
 	.wc-hero-links {
 		width: 100%;
 	}
+}
+
+/* ---------- Collegamenti nel piede di pagina ---------- */
+.wc-footer-links {
+	font-size: 0.85rem;
+	color: var(--wc-muted);
+}
+
+.wc-footer-links a {
+	color: var(--wc-muted);
+	margin: 0 0.4rem;
+}
+
+.wc-footer-links a:hover {
+	color: var(--wc-accent);
 }
 
 /* ---------- Pulsante tema ---------- */
