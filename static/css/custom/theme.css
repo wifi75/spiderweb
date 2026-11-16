@@ -221,9 +221,35 @@ html body {
 	border-radius: 3px;
 }
 
+/* Bandiere: cornice bianca, cosi anche quelle blu scuro si staccano dallo sfondo */
 .img-flag {
+	background-color: #ffffff !important;
+	background-origin: content-box !important;
+	background-repeat: no-repeat !important;
+	padding: 2px !important;
+	border: 1px solid rgba(255, 255, 255, 0.85) !important;
+	border-radius: 3px !important;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35) !important;
+}
+
+html[data-bs-theme="light"] .img-flag {
+	border-color: rgba(0, 0, 0, 0.25) !important;
 	box-shadow: none !important;
-	border-color: var(--wc-line) !important;
+}
+
+/* Icona "spedizione DX annunciata" (altoparlante): ambra, ben visibile su entrambi i temi */
+#spotsTable .bi-megaphone-fill {
+	color: #f5a524 !important;
+	background: color-mix(in srgb, #f5a524 22%, transparent);
+	border-radius: 50%;
+	padding: 3px;
+	margin-left: 6px;
+	font-size: 0.85em;
+	vertical-align: middle;
+}
+
+#spotsTable tr.table-info .bi-megaphone-fill {
+	color: #ffc857 !important;
 }
 
 #collapseFilters {
