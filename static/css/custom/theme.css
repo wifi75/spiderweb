@@ -10,7 +10,7 @@
 	--wc-accent: #0b6fcc;
 	--wc-head: #31506f;
 	--wc-row-even: #e8eef6;
-	--wc-row-hover: #d3e1f2;
+	--wc-row-hover: #fff0a0;
 	--wc-comment: #4a5d73;
 	--wc-new-bg: #c4efd6;
 	--wc-new-flash: #6fdc9f;
@@ -27,7 +27,7 @@ html[data-bs-theme="dark"] {
 	--wc-accent: #5db4ff;
 	--wc-head: #8db6e8;
 	--wc-row-even: #172740;
-	--wc-row-hover: #243d63;
+	--wc-row-hover: #6a5400;
 	--wc-comment: #b4c3da;
 	--wc-new-bg: #0e5a40;
 	--wc-new-flash: #1fa26f;
@@ -228,6 +228,12 @@ html body {
 #spotsTable tr.table-info > td {
 	background-color: var(--wc-new-bg) !important;
 	animation: wc-flash 7s ease-out;
+}
+
+/* passando il mouse su uno spot nuovo vale lo stesso giallo delle altre righe */
+#spotsTable tr.table-info:hover > td {
+	background-color: var(--wc-row-hover) !important;
+	animation: none;
 }
 
 @keyframes wc-flash {
