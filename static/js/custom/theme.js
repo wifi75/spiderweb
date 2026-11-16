@@ -237,15 +237,18 @@
 			}
 		}
 
-		function toggle(list, value, pill) {
-			var i = list.indexOf(value);
-			if (i === -1) {
-				list.push(value);
-				pill.classList.add('on');
-			} else {
-				list.splice(i, 1);
-				pill.classList.remove('on');
-			}
+		/* values: elenco di valori (una banda, oppure il gruppo VHF+) */
+		function toggle(list, values, pill) {
+			var turnOn = !pill.classList.contains('on');
+			values.forEach(function (value) {
+				var i = list.indexOf(value);
+				if (turnOn && i === -1) {
+					list.push(value);
+				} else if (!turnOn && i !== -1) {
+					list.splice(i, 1);
+				}
+			});
+			pill.classList.toggle('on', turnOn);
 			allPill.classList.toggle('on', !state.bands.length && !state.modes.length && !state.noft8);
 			apply();
 		}
@@ -258,17 +261,23 @@
 		}, 'on');
 
 		var opts = [].map.call(bandSel.options, function (o) { return o.value; });
-		opts.forEach(function (v) {
-			var label = /^\d+$/.test(v) ? v + 'm' : v;
-			var p = mk(label, function () { toggle(state.bands, v, p); });
+		var hf = opts.filter(function (v) { return /^\d+$/.test(v) && v !== '60'; })
+			.sort(function (a, b) { return Number(b) - Number(a); });
+		var vhf = opts.filter(function (v) { return !/^\d+$/.test(v); });
+
+		hf.forEach(function (v) {
+			var p = mk(v + 'm', function () { toggle(state.bands, [v], p); });
 		});
+		if (vhf.length) {
+			var pv = mk('VHF+', function () { toggle(state.bands, vhf, pv); });
+		}
 
 		var sep = document.createElement('span');
 		sep.className = 'wc-sep';
 		bar.appendChild(sep);
 
 		[['CW', 'cw'], ['SSB', 'phone'], ['Digi', 'digi']].forEach(function (m) {
-			var p = mk(m[0], function () { toggle(state.modes, m[1], p); });
+			var p = mk(m[0], function () { toggle(state.modes, [m[1]], p); });
 		});
 		var pf = mk('Senza FT8', function () {
 			state.noft8 = !state.noft8;

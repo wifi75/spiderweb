@@ -19,8 +19,8 @@
 
 	<link rel="preload" href="/static/css/rel/style.min.css" as="style">
 	<link rel="stylesheet" href="/static/css/rel/style.min.css">
-	<link rel="stylesheet" href="/static/css/custom/theme.css?v=3">
-	<script defer src="/static/js/custom/theme.js?v=1"></script>
+	<link rel="stylesheet" href="/static/css/custom/theme.css?v=4">
+	<script defer src="/static/js/custom/theme.js?v=2"></script>
 
 	<!-- lazy loading of cloudflare -->
 	<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -99,17 +99,19 @@
 	</header>
 
 	<div class="container-fluid mt-1 ml-0 mr-0 px-0">
-		<div class="ipcs bg-light p-4 rounded-lg m-2">
-			{% block titles %}
-			{% endblock %}
-			<p class="text-light">
-				Telnet access:
-				<a href="telnet://cluster.iu3cyv.eu:7300" class="text-white">cluster.iu3cyv.eu:7300</a>
-			</p>
-			<p class="text-light">
-				For connect your cluster, write to
-				<a href="mailto:{{ mail }}?Subject=Connect%20my%20DxCluster%20node" target="_top" class="text-white">{{ mail }}</a>
-			</p>
+		<div class="ipcs bg-light p-4 rounded-lg m-2 wc-hero">
+			<div class="wc-hero-main">
+				{% block titles %}
+				{% endblock %}
+			</div>
+			<div class="wc-hero-links">
+				<a href="telnet://cluster.iu3cyv.eu:7300" class="wc-chip" title="Accesso telnet">
+					<i class="bi-terminal"></i> telnet cluster.iu3cyv.eu:7300
+				</a>
+				<a href="mailto:{{ mail }}?Subject=Connect%20my%20DxCluster%20node" target="_top" class="wc-chip" title="Collega il tuo cluster">
+					<i class="bi-envelope"></i> Collega il tuo cluster
+				</a>
+			</div>
 		</div>
 		{% block filters %}
 		{% endblock filters %}
