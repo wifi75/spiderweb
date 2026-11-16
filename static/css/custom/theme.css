@@ -281,10 +281,10 @@ html[data-bs-theme="light"] .img-flag {
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) !important;
 }
 
-/* Icona "spedizione DX annunciata" (altoparlante): ambra, ben visibile su entrambi i temi */
-#spotsTable .bi-megaphone-fill {
-	color: #f5a524 !important;
-	background: color-mix(in srgb, #f5a524 22%, transparent);
+/* Icona "spedizione DX annunciata" (mappamondo): colore del tema */
+#spotsTable .wc-dxped {
+	color: var(--wc-accent) !important;
+	background: color-mix(in srgb, var(--wc-accent) 18%, transparent);
 	border-radius: 50%;
 	padding: 3px;
 	margin-left: 6px;
@@ -292,8 +292,8 @@ html[data-bs-theme="light"] .img-flag {
 	vertical-align: middle;
 }
 
-#spotsTable tr.table-info .bi-megaphone-fill {
-	color: #ffc857 !important;
+#spotsTable tr.table-info .wc-dxped {
+	color: inherit !important;
 }
 
 #collapseFilters {

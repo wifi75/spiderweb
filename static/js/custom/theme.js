@@ -346,7 +346,7 @@
 		a.title = L('websdr');
 		a.setAttribute('aria-label', L('websdr'));
 		var ic = document.createElement('i');
-		ic.className = 'bi-headphones';
+		ic.className = 'bi-broadcast';
 		a.appendChild(ic);
 		cell.appendChild(a);
 	}
@@ -387,6 +387,12 @@
 		}
 
 		addWebSdr(tr, badge);
+		/* spedizione DX annunciata: mappamondo al posto dell'altoparlante */
+		var mega = tr.querySelector('.bi-megaphone-fill');
+		if (mega) {
+			mega.classList.remove('bi-megaphone-fill');
+			mega.classList.add('bi-globe-americas', 'wc-dxped');
+		}
 
 		var cells = tr.children;
 		var tdCountry = cells[4];
