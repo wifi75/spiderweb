@@ -871,3 +871,7 @@ html[data-bs-theme="light"] .wc-flag .fi {
 }
 .wc-mode.wc-m-cw { color: #d97706; border-color: #d97706; }
 .wc-mode.wc-m-ssb, .wc-mode.wc-m-fm { color: #1f9d63; border-color: #1f9d63; }
+
+.wc-mode { cursor: pointer; }
+.wc-mode:hover { background: var(--wc-row-hover); }
+.wc-quickbar .wc-modechip[hidden] { display: none; }

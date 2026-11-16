@@ -342,6 +342,9 @@
 				var mt = document.createElement('span');
 				mt.className = 'wc-mode wc-m-' + mode.toLowerCase();
 				mt.textContent = mode;
+				mt.title = L('modefilter');
+				mt.dataset.mode = mode;
+				tr.dataset.mode = mode;
 				badge.parentNode.insertBefore(mt, badge.nextSibling);
 			}
 		}
@@ -411,10 +414,12 @@
 
 	/* ---------- filtri rapidi ---------- */
 	var textQuery = '';
+	var modeFilter = '';
+	var refilter = function () {};
 	function applyTextFilter(tr) {
 		var q = textQuery.trim().toLowerCase();
-		var show = true;
-		if (q) {
+		var show = !modeFilter || tr.dataset.mode === modeFilter;
+		if (q && show) {
 			var hay = rowText(tr).toLowerCase();
 			show = q.split(',').some(function (alt) {
 				var words = alt.trim().split(/\s+/).filter(Boolean);
@@ -531,6 +536,25 @@
 			textQuery = txt.value;
 			try { localStorage.setItem('wc-textfilter', txt.value); } catch (e) { /* ignora */ }
 			if (tf) { [].forEach.call(tf.rows, applyTextFilter); }
+		}
+		/* filtro per singolo modo: si clicca sull'etichetta del modo in una riga */
+		var chip = document.createElement('button');
+		chip.type = 'button';
+		chip.className = 'wc-pill on wc-modechip';
+		chip.hidden = true;
+		bar.appendChild(chip);
+		function setMode(m) {
+			modeFilter = m;
+			chip.hidden = !m;
+			chip.textContent = m ? L('modefilter_on') + ' ' + m + '  ✕' : '';
+			if (tf) { [].forEach.call(tf.rows, applyTextFilter); }
+		}
+		chip.addEventListener('click', function () { setMode(''); });
+		if (tf) {
+			tf.addEventListener('click', function (e) {
+				var t = e.target.closest ? e.target.closest('.wc-mode') : null;
+				if (t) { setMode(modeFilter === t.dataset.mode ? '' : t.dataset.mode); }
+			});
 		}
 		txt.addEventListener('input', runTextFilter);
 		try { txt.value = localStorage.getItem('wc-textfilter') || ''; } catch (e) { /* ignora */ }
