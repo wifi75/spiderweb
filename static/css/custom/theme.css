@@ -498,6 +498,61 @@ html[data-bs-theme="light"] .img-flag {
 	line-height: 1.55;
 }
 
+/* pulsante Scarica con l'etichetta "Nuova applicazione" accanto */
+.wc-promo-cta {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 2px;
+}
+
+/* etichetta a stella con il bordo a zigzag: sotto il giallo, sopra l'arancio piu largo */
+.wc-promo-new {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 92px;
+	height: 92px;
+	margin: -12px 0;
+	background: #e8590c;
+	color: #3a1a00;
+	text-align: center;
+	font-size: 0.68rem;
+	font-weight: 800;
+	line-height: 1.1;
+	text-transform: uppercase;
+	letter-spacing: 0.2px;
+	transform: rotate(-9deg);
+	clip-path: polygon(50.0% 0.0%, 59.1% 10.0%, 71.7% 5.0%, 75.6% 17.9%, 89.1% 18.8%, 86.9% 32.2%, 98.7% 38.9%, 91.0% 50.0%, 98.7% 61.1%, 86.9% 67.8%, 89.1% 81.2%, 75.6% 82.1%, 71.7% 95.0%, 59.1% 90.0%, 50.0% 100.0%, 40.9% 90.0%, 28.3% 95.0%, 24.4% 82.1%, 10.9% 81.2%, 13.1% 67.8%, 1.3% 61.1%, 9.0% 50.0%, 1.3% 38.9%, 13.1% 32.2%, 10.9% 18.8%, 24.4% 17.9%, 28.3% 5.0%, 40.9% 10.0%);
+	animation: wc-new-pulse 2.4s ease-in-out infinite;
+}
+
+.wc-promo-new::before {
+	content: "";
+	position: absolute;
+	inset: 5px;
+	background: #ffd23f;
+	clip-path: polygon(50.0% 0.0%, 59.1% 10.0%, 71.7% 5.0%, 75.6% 17.9%, 89.1% 18.8%, 86.9% 32.2%, 98.7% 38.9%, 91.0% 50.0%, 98.7% 61.1%, 86.9% 67.8%, 89.1% 81.2%, 75.6% 82.1%, 71.7% 95.0%, 59.1% 90.0%, 50.0% 100.0%, 40.9% 90.0%, 28.3% 95.0%, 24.4% 82.1%, 10.9% 81.2%, 13.1% 67.8%, 1.3% 61.1%, 9.0% 50.0%, 1.3% 38.9%, 13.1% 32.2%, 10.9% 18.8%, 24.4% 17.9%, 28.3% 5.0%, 40.9% 10.0%);
+}
+
+.wc-promo-new > span {
+	position: relative;
+	z-index: 1;
+	max-width: 62px;
+}
+
+@keyframes wc-new-pulse {
+	0%, 100% { transform: rotate(-9deg) scale(1); }
+	50% { transform: rotate(-9deg) scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wc-promo-new {
+		animation: none;
+	}
+}
+
 .wc-promo-btn {
 	flex: 0 0 auto;
 	display: inline-flex;
@@ -555,8 +610,25 @@ html[data-bs-theme="light"] .img-flag {
 		display: none;
 	}
 
-	.wc-promo-btn {
+	.wc-promo-cta {
 		width: 100%;
+		justify-content: center;
+		gap: 6px;
+	}
+
+	.wc-promo-new {
+		width: 76px;
+		height: 76px;
+		margin: -10px 0;
+		font-size: 0.58rem;
+	}
+
+	.wc-promo-new > span {
+		max-width: 50px;
+	}
+
+	.wc-promo-btn {
+		flex: 1 1 auto;
 		justify-content: center;
 	}
 }

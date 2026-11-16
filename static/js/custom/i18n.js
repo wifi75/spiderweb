@@ -52,6 +52,7 @@
 			'面向业余无线电爱好者的免费开源软件：FT8、FT4、CW、RTTY、SSTV 等，支持 Windows、Linux 和 macOS。'
 		],
 		promo_btn: ['Scarica', 'Download', 'Baixar', 'Descargar', 'Скачать', 'Télécharger', 'Herunterladen', 'ダウンロード', '下载'],
+		promo_new: ['Nuova app', 'New app', 'Novo app', 'Nueva app', 'Новинка', 'Nouvelle app', 'Neue App', '新アプリ', '新应用'],
 		promo_free: ['Gratis', 'Free', 'Grátis', 'Gratis', 'Бесплатно', 'Gratuit', 'Kostenlos', '無料', '免费'],
 		promo_title: [
 			'Aurora, la tua stazione radio multimodo',
