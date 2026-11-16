@@ -308,6 +308,10 @@
 		['SSTV', /\bsstv\b/i], ['WSPR', /\bwspr\b/i], ['CW', /\bcw\b/i], ['SSB', /\b(ssb|usb|lsb)\b/i], ['FM', /\bfm\b/i]];
 	var CW_LIMIT = [[1800, 1838], [3500, 3570], [7000, 7040], [10100, 10130], [14000, 14070], [18068, 18095], [21000, 21070], [24890, 24915], [28000, 28070]];
 	var DIGI_FREQ = [[1840, 1843], [3573, 3600], [5357, 5358], [7040, 7060], [10130, 10150], [14070, 14099], [18095, 18109], [21070, 21100], [24915, 24929], [28070, 28120], [50300, 50320]];
+	/* testo della riga con uno spazio fra le celle (altrimenti i confini di parola si perdono) */
+	function rowText(tr) {
+		return [].map.call(tr.children, function (c) { return c.textContent; }).join(' ');
+	}
 	function inRanges(f, list) {
 		return list.some(function (r) { return f >= r[0] && f < r[1]; });
 	}
@@ -333,7 +337,7 @@
 		if (badge) {
 			var cls = bandClass(parseFreq(badge.textContent));
 			badge.className = 'wc-band ' + cls;
-			var mode = guessMode(tr.textContent, parseFreq(badge.textContent));
+			var mode = guessMode(rowText(tr), parseFreq(badge.textContent));
 			if (mode) {
 				var mt = document.createElement('span');
 				mt.className = 'wc-mode wc-m-' + mode.toLowerCase();
@@ -411,7 +415,7 @@
 		var q = textQuery.trim().toLowerCase();
 		var show = true;
 		if (q) {
-			var hay = (tr.textContent || '').toLowerCase();
+			var hay = rowText(tr).toLowerCase();
 			show = q.split(',').some(function (alt) {
 				var words = alt.trim().split(/\s+/).filter(Boolean);
 				return words.length > 0 && words.every(function (w) { return hay.indexOf(w) !== -1; });
