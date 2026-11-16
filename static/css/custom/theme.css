@@ -454,6 +454,30 @@ html[data-bs-theme="light"] .img-flag {
 	color: var(--wc-accent);
 }
 
+/* ---------- Selettore della lingua (nella barra scura in alto) ---------- */
+.wc-lang {
+	display: inline-block;
+	width: auto;
+	margin-right: 0.5rem;
+	background-color: #212529;
+	color: #e9ecef;
+	border-color: #495057;
+	cursor: pointer;
+}
+
+.wc-lang:hover,
+.wc-lang:focus {
+	border-color: var(--wc-accent);
+	box-shadow: 0 0 0 2px color-mix(in srgb, var(--wc-accent) 35%, transparent);
+	background-color: #2b3036;
+	color: #ffffff;
+}
+
+.wc-lang option {
+	background: #212529;
+	color: #e9ecef;
+}
+
 /* ---------- Pulsante tema ---------- */
 #wc-theme-toggle {
 	margin-right: 0.5rem;

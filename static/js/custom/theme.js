@@ -7,6 +7,11 @@
 (function () {
 	'use strict';
 
+	/* testo nella lingua scelta (i18n.js); se manca, usa la chiave */
+	function L(key) {
+		return window.wcI18n ? window.wcI18n.t(key) : key;
+	}
+
 	/* ---------- tema chiaro / scuro ---------- */
 	var KEY = 'wc-theme';
 
@@ -25,7 +30,9 @@
 		var b = document.getElementById('wc-theme-toggle');
 		if (b) {
 			b.firstChild.className = t === 'dark' ? 'bi-sun-fill' : 'bi-moon-stars-fill';
-			b.setAttribute('aria-label', t === 'dark' ? 'Tema chiaro' : 'Tema scuro');
+			var tip = L(t === 'dark' ? 'theme_to_light' : 'theme_to_dark');
+			b.setAttribute('aria-label', tip);
+			b.title = tip;
 		}
 	}
 
@@ -49,6 +56,32 @@
 		clock.parentNode.insertBefore(btn, clock);
 		applyTheme(savedTheme());
 		addSoundButton(clock);
+		addLangSelect();
+	}
+
+	/* ---------- selettore della lingua ---------- */
+	function addLangSelect() {
+		var i18n = window.wcI18n;
+		var sound = document.getElementById('wc-sound-toggle');
+		if (!i18n || !sound || document.getElementById('wc-lang')) {
+			return;
+		}
+		var sel = document.createElement('select');
+		sel.id = 'wc-lang';
+		sel.className = 'form-select form-select-sm wc-lang';
+		sel.title = i18n.t('lang_label');
+		sel.setAttribute('aria-label', i18n.t('lang_label'));
+		i18n.langs.forEach(function (l) {
+			var o = document.createElement('option');
+			o.value = l[0];
+			o.textContent = l[1];
+			if (l[0] === i18n.lang) {
+				o.selected = true;
+			}
+			sel.appendChild(o);
+		});
+		sel.addEventListener('change', function () { i18n.setLang(sel.value); });
+		sound.parentNode.insertBefore(sel, sound);
 	}
 
 	/* ---------- suono per i nuovi spot ---------- */
@@ -122,8 +155,9 @@
 		}
 		var on = soundOn();
 		b.firstChild.className = on ? 'bi-volume-up-fill' : 'bi-volume-mute-fill';
-		b.setAttribute('aria-label', on ? 'Disattiva il suono dei nuovi spot' : 'Attiva il suono dei nuovi spot');
-		b.title = on ? 'Suono nuovi spot: acceso' : 'Suono nuovi spot: spento';
+		var tip = L(on ? 'sound_on' : 'sound_off');
+		b.setAttribute('aria-label', tip);
+		b.title = tip;
 	}
 
 	function addSoundButton(clock) {
@@ -290,8 +324,11 @@
 		var tdCountry = cells[4];
 		if (tdCountry && tdCountry.tagName === 'TD') {
 			var en = tdCountry.textContent.trim();
-			var it = IT[en];
-			if (it) {
+			var flagEl = tr.querySelector('.img-flag');
+			var m = flagEl ? /\bfi-([a-z]{2})\b/.exec(flagEl.className) : null;
+			var iso = m ? m[1] : '';
+			var it = window.wcI18n ? window.wcI18n.country(en, iso, IT) : IT[en];
+			if (it && it !== en) {
 				tdCountry.textContent = it;
 				tdCountry.title = en;
 				var flag = tr.querySelector('.img-flag');
@@ -391,7 +428,7 @@
 			apply();
 		}
 
-		var allPill = mk('Tutti', function () {
+		var allPill = mk(L('all'), function () {
 			state.bands = []; state.modes = []; state.noft8 = false;
 			pills.forEach(function (p) { p.classList.remove('on'); });
 			allPill.classList.add('on');
@@ -417,7 +454,7 @@
 		[['CW', 'cw'], ['SSB', 'phone'], ['Digi', 'digi']].forEach(function (m) {
 			var p = mk(m[0], function () { toggle(state.modes, [m[1]], p); });
 		});
-		var pf = mk('Senza FT8', function () {
+		var pf = mk(L('noft8'), function () {
 			state.noft8 = !state.noft8;
 			pf.classList.toggle('on', state.noft8);
 			allPill.classList.toggle('on', !state.bands.length && !state.modes.length && !state.noft8);
