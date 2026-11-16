@@ -345,6 +345,20 @@
 		a.rel = 'noopener';
 		a.title = L('websdr');
 		a.setAttribute('aria-label', L('websdr'));
+		/* su schermi larghi si apre in una finestra piccola accanto al portale, sempre la stessa: un nuovo clic la risintonizza */
+		a.addEventListener('click', function (e) {
+			if (window.innerWidth < 900 || e.ctrlKey || e.metaKey || e.shiftKey) {
+				return;
+			}
+			var w = 560;
+			var h = Math.min(760, window.screen.availHeight - 80);
+			var left = Math.max(0, (window.screenX || 0) + window.outerWidth - w);
+			var win = window.open(a.href, 'wcWebSdr', 'popup=yes,width=' + w + ',height=' + h + ',left=' + left + ',top=40,resizable=yes,scrollbars=yes');
+			if (win) {
+				e.preventDefault();
+				win.focus();
+			}
+		});
 		var ic = document.createElement('i');
 		ic.className = 'bi-broadcast';
 		a.appendChild(ic);
