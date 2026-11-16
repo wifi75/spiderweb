@@ -56,7 +56,7 @@
 		spots_list: ['Elenco spot', 'Spots list', 'Lista de spots', 'Lista de spots', 'Список спотов', 'Liste des spots', 'Spot-Liste', 'スポット一覧', 'Spot 列表'],
 		th_country: ['Paese', 'Country', 'País', 'País', 'Страна', 'Pays', 'Land', '国', '国家'],
 		th_comments: ['Commenti', 'Comments', 'Comentários', 'Comentarios', 'Комментарии', 'Commentaires', 'Kommentare', 'コメント', '备注'],
-		menu_charts: ['Grafici e statistiche', 'Charts & stats', 'Gráficos e estatísticas', 'Gráficos y estadísticas', 'Графики и статистика', 'Graphiques et stats', 'Diagramme & Statistik', 'グラフと統計', '图表与统计'],
+		menu_charts: ['Statistiche', 'Charts & stats', 'Estatísticas', 'Estadísticas', 'Статистика', 'Statistiques', 'Statistik', '統計', '统计'],
 		menu_prop: ['Propagazione', 'Propagation', 'Propagação', 'Propagación', 'Прохождение', 'Propagation', 'Ausbreitung', '電波伝搬', '电波传播'],
 		footer_privacy: ['Privacy', 'Privacy', 'Privacidade', 'Privacidad', 'Конфиденциальность', 'Confidentialité', 'Datenschutz', 'プライバシー', '隐私'],
 		footer_cookies: ['Cookies', 'Cookies', 'Cookies', 'Cookies', 'Cookies', 'Cookies', 'Cookies', 'Cookie', 'Cookie'],

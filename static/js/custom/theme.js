@@ -56,32 +56,40 @@
 		clock.parentNode.insertBefore(btn, clock);
 		applyTheme(savedTheme());
 		addSoundButton(clock);
-		addLangSelect();
+		addLangFlags();
 	}
 
-	/* ---------- selettore della lingua ---------- */
-	function addLangSelect() {
+	/* ---------- una bandiera per lingua ---------- */
+	var FLAG_OF = { it: 'it', en: 'gb', pt: 'pt', es: 'es', ru: 'ru', fr: 'fr', de: 'de', ja: 'jp', zh: 'cn' };
+
+	function addLangFlags() {
 		var i18n = window.wcI18n;
 		var sound = document.getElementById('wc-sound-toggle');
-		if (!i18n || !sound || document.getElementById('wc-lang')) {
+		if (!i18n || !sound || document.getElementById('wc-langs')) {
 			return;
 		}
-		var sel = document.createElement('select');
-		sel.id = 'wc-lang';
-		sel.className = 'form-select form-select-sm wc-lang';
-		sel.title = i18n.t('lang_label');
-		sel.setAttribute('aria-label', i18n.t('lang_label'));
+		var box = document.createElement('div');
+		box.id = 'wc-langs';
+		box.className = 'wc-langs';
+		box.setAttribute('role', 'group');
+		box.setAttribute('aria-label', i18n.t('lang_label'));
 		i18n.langs.forEach(function (l) {
-			var o = document.createElement('option');
-			o.value = l[0];
-			o.textContent = l[1];
-			if (l[0] === i18n.lang) {
-				o.selected = true;
-			}
-			sel.appendChild(o);
+			var b = document.createElement('button');
+			b.type = 'button';
+			b.className = 'wc-flag' + (l[0] === i18n.lang ? ' on' : '');
+			b.title = l[1];
+			b.setAttribute('aria-label', l[1]);
+			var f = document.createElement('span');
+			f.className = 'fi fi-' + (FLAG_OF[l[0]] || l[0]);
+			b.appendChild(f);
+			b.addEventListener('click', function () {
+				if (l[0] !== i18n.lang) {
+					i18n.setLang(l[0]);
+				}
+			});
+			box.appendChild(b);
 		});
-		sel.addEventListener('change', function () { i18n.setLang(sel.value); });
-		sound.parentNode.insertBefore(sel, sound);
+		sound.parentNode.insertBefore(box, sound);
 	}
 
 	/* ---------- suono per i nuovi spot ---------- */

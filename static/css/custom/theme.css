@@ -12,8 +12,10 @@
 	--wc-row-even: #e8eef6;
 	--wc-row-hover: #d3e1f2;
 	--wc-comment: #4a5d73;
-	--wc-new-bg: #cfe5fb;
-	--wc-new-tx: #0b2540;
+	--wc-new-bg: #c4efd6;
+	--wc-new-flash: #6fdc9f;
+	--wc-new-tx: #0a2a1a;
+	--wc-new-bar: #12935a;
 }
 
 html[data-bs-theme="dark"] {
@@ -27,8 +29,10 @@ html[data-bs-theme="dark"] {
 	--wc-row-even: #172740;
 	--wc-row-hover: #243d63;
 	--wc-comment: #b4c3da;
-	--wc-new-bg: #1d4a73;
+	--wc-new-bg: #0e5a40;
+	--wc-new-flash: #1fa26f;
 	--wc-new-tx: #ffffff;
+	--wc-new-bar: #4ade9b;
 	--bs-body-bg: #0b1220;
 	--bs-body-bg-rgb: 11, 18, 32;
 	--bs-body-color: #eef3fc;
@@ -125,9 +129,15 @@ html body {
 	cursor: pointer;
 }
 
-.wc-pill:hover {
+.wc-pill {
+	transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.wc-pill:hover,
+.wc-pill:focus-visible {
+	background-color: color-mix(in srgb, var(--wc-accent) 26%, var(--wc-surface));
 	border-color: var(--wc-accent);
-	color: var(--wc-accent);
+	color: var(--wc-text);
 }
 
 .wc-pill.on,
@@ -207,11 +217,29 @@ html body {
 /* Spot appena arrivati: Bootstrap li evidenzia con .table-info (azzurro chiaro),
    qui sostituito con colori leggibili in entrambi i temi */
 #spotsTable tr.table-info {
-	--bs-table-bg: var(--wc-new-bg);
-	--bs-table-bg-type: var(--wc-new-bg);
-	--bs-table-bg-state: var(--wc-new-bg);
+	--bs-table-bg: transparent;
+	--bs-table-bg-type: transparent;
+	--bs-table-bg-state: transparent;
 	--bs-table-color: var(--wc-new-tx);
 	--bs-table-color-type: var(--wc-new-tx);
+}
+
+/* Spot appena arrivati: lampo luminoso che sfuma nel colore di riposo */
+#spotsTable tr.table-info > td {
+	background-color: var(--wc-new-bg) !important;
+	animation: wc-flash 7s ease-out;
+}
+
+@keyframes wc-flash {
+	0% { background-color: var(--wc-new-flash); }
+	35% { background-color: var(--wc-new-flash); }
+	100% { background-color: var(--wc-new-bg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#spotsTable tr.table-info > td {
+		animation: none;
+	}
 }
 
 #spotsTable tr.table-info > td,
@@ -222,7 +250,7 @@ html body {
 }
 
 #spotsTable tr.table-info > td:first-child {
-	box-shadow: inset 4px 0 0 var(--wc-accent);
+	box-shadow: inset 5px 0 0 var(--wc-new-bar);
 }
 
 #spotsTable mark {
@@ -232,20 +260,19 @@ html body {
 	border-radius: 3px;
 }
 
-/* Bandiere: cornice bianca, cosi anche quelle blu scuro si staccano dallo sfondo */
+/* Bandiere: nessuno sfondo ne cornice piena, solo un filo sottile per staccarle dalla riga */
 .img-flag {
-	background-color: #ffffff !important;
-	background-origin: content-box !important;
+	background-color: transparent !important;
+	background-origin: padding-box !important;
 	background-repeat: no-repeat !important;
-	padding: 2px !important;
-	border: 1px solid rgba(255, 255, 255, 0.85) !important;
-	border-radius: 3px !important;
-	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35) !important;
+	padding: 0 !important;
+	border: 0 !important;
+	border-radius: 2px !important;
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4) !important;
 }
 
 html[data-bs-theme="light"] .img-flag {
-	border-color: rgba(0, 0, 0, 0.25) !important;
-	box-shadow: none !important;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) !important;
 }
 
 /* Icona "spedizione DX annunciata" (altoparlante): ambra, ben visibile su entrambi i temi */
@@ -454,28 +481,61 @@ html[data-bs-theme="light"] .img-flag {
 	color: var(--wc-accent);
 }
 
-/* ---------- Selettore della lingua (nella barra scura in alto) ---------- */
-.wc-lang {
-	display: inline-block;
-	width: auto;
-	margin-right: 0.5rem;
-	background-color: #212529;
-	color: #e9ecef;
-	border-color: #495057;
-	cursor: pointer;
+/* Pulsante di ricerca nominativo e pulsanti della testata: sfondo che si illumina */
+#btn-callsign-search {
+	transition: background-color 0.12s ease, color 0.12s ease;
 }
 
-.wc-lang:hover,
-.wc-lang:focus {
+#btn-callsign-search:hover,
+#btn-callsign-search:focus-visible {
+	background-color: var(--wc-accent);
 	border-color: var(--wc-accent);
-	box-shadow: 0 0 0 2px color-mix(in srgb, var(--wc-accent) 35%, transparent);
-	background-color: #2b3036;
-	color: #ffffff;
+	color: #08121f;
 }
 
-.wc-lang option {
-	background: #212529;
-	color: #e9ecef;
+/* ---------- Bandiere delle lingue (barra scura in alto) ---------- */
+.wc-langs {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 3px;
+	margin-right: 0.75rem;
+}
+
+/* bandierine delle lingue: nessuno sfondo; la lingua attiva e piena, le altre attenuate */
+.wc-flag {
+	background: transparent !important;
+	border: 0 !important;
+	border-bottom: 2px solid transparent !important;
+	border-radius: 0 !important;
+	padding: 3px 3px 2px;
+	line-height: 0;
+	opacity: 0.55;
+	cursor: pointer;
+	transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.wc-flag .fi {
+	width: 22px;
+	height: 16px;
+	border-radius: 2px;
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.wc-flag:hover,
+.wc-flag:focus-visible {
+	opacity: 1;
+	transform: translateY(-1px);
+}
+
+.wc-flag.on {
+	opacity: 1;
+	border-bottom-color: var(--wc-accent) !important;
+}
+
+/* Le voci del menu in alto restano su una riga */
+.navbar-nav .nav-link {
+	white-space: nowrap;
 }
 
 /* ---------- Pulsante tema ---------- */
