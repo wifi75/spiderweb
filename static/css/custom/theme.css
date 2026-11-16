@@ -193,6 +193,17 @@ html body {
 	color: var(--wc-muted);
 }
 
+#spotsTable tbody td.wc-utc {
+	color: var(--wc-muted);
+	white-space: nowrap;
+	line-height: 1.25;
+}
+
+#spotsTable tbody td.wc-utc > div > div + div {
+	font-size: 0.75em;
+	opacity: 0.85;
+}
+
 /* Spot appena arrivati: Bootstrap li evidenzia con .table-info (azzurro chiaro),
    qui sostituito con colori leggibili in entrambi i temi */
 #spotsTable tr.table-info {

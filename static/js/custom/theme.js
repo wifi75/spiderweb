@@ -273,6 +273,19 @@
 			badge.className = 'wc-band ' + cls;
 		}
 
+		/* la colonna UTC e un <div> messo direttamente nella riga (non una cella): lo mettiamo in una vera <td>,
+		   cosi riceve lo stesso sfondo e le stesse righe alternate delle altre colonne */
+		for (var k = 0; k < tr.children.length; k++) {
+			var child = tr.children[k];
+			if (child.tagName === 'DIV') {
+				var cell = document.createElement('td');
+				cell.className = 'wc-utc';
+				tr.replaceChild(cell, child);
+				cell.appendChild(child);
+				break;
+			}
+		}
+
 		var cells = tr.children;
 		var tdCountry = cells[4];
 		if (tdCountry && tdCountry.tagName === 'TD') {
