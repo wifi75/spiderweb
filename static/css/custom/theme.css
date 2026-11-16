@@ -180,11 +180,11 @@ html body {
 	color: var(--wc-muted);
 }
 
-#spotsTable tbody td:nth-child(3) {
+#spotsTable tbody td:nth-child(4) {
 	font-weight: 600;
 }
 
-#spotsTable tbody td:nth-child(6) {
+#spotsTable tbody td:nth-child(7) {
 	color: var(--wc-comment);
 	font-size: 0.9em;
 }
@@ -855,7 +855,7 @@ html[data-bs-theme="light"] .wc-flag .fi {
 /* modo dello spot, accanto alla banda */
 .wc-mode {
 	display: inline-block;
-	margin-left: 6px;
+	margin-left: 0;
 	padding: 1px 6px;
 	border-radius: 5px;
 	font-size: .68rem;

@@ -372,19 +372,13 @@
 		tr.dataset.wc = '1';
 
 		var badge = tr.querySelector('span.badge');
+		var freqCell = null;
 		if (badge) {
 			var cls = bandClass(parseFreq(badge.textContent));
 			badge.className = 'wc-band ' + cls;
 			var mode = guessMode(rowText(tr), parseFreq(badge.textContent));
-			if (mode) {
-				var mt = document.createElement('span');
-				mt.className = 'wc-mode wc-m-' + mode.toLowerCase();
-				mt.textContent = mode;
-				mt.title = L('modefilter');
-				mt.dataset.mode = mode;
-				tr.dataset.mode = mode;
-				badge.parentNode.insertBefore(mt, badge.nextSibling);
-			}
+			tr.dataset.mode = mode;
+			freqCell = badge.parentNode;
 		}
 
 		/* la colonna UTC e un <div> messo direttamente nella riga (non una cella): lo mettiamo in una vera <td>,
@@ -430,6 +424,21 @@
 					} catch (e) { /* il pop-up resta in inglese */ }
 				}
 			}
+		}
+
+		/* colonna "Modo": cella propria dopo la frequenza (fatta per ultima, cosi gli indici sopra restano validi) */
+		if (freqCell) {
+			var tdMode = document.createElement('td');
+			tdMode.className = 'wc-modecell';
+			if (tr.dataset.mode) {
+				var mt = document.createElement('span');
+				mt.className = 'wc-mode wc-m-' + tr.dataset.mode.toLowerCase();
+				mt.textContent = tr.dataset.mode;
+				mt.title = L('modefilter');
+				mt.dataset.mode = tr.dataset.mode;
+				tdMode.appendChild(mt);
+			}
+			freqCell.parentNode.insertBefore(tdMode, freqCell.nextSibling);
 		}
 	}
 

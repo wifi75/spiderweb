@@ -72,6 +72,7 @@
 		],
 		promo_close: ['Chiudi l\'annuncio', 'Close the ad', 'Fechar o anúncio', 'Cerrar el anuncio', 'Закрыть объявление', 'Fermer l\'annonce', 'Anzeige schließen', '広告を閉じる', '关闭广告'],
 		spots_list: ['Elenco spot', 'Spots list', 'Lista de spots', 'Lista de spots', 'Список спотов', 'Liste des spots', 'Spot-Liste', 'スポット一覧', 'Spot 列表'],
+		th_mode: ['Modo', 'Mode', 'Modo', 'Modo', 'Вид', 'Mode', 'Modus', 'モード', '模式'],
 		th_country: ['Paese', 'Country', 'País', 'País', 'Страна', 'Pays', 'Land', '国', '国家'],
 		th_comments: ['Commenti', 'Comments', 'Comentários', 'Comentarios', 'Комментарии', 'Commentaires', 'Kommentare', 'コメント', '备注'],
 		menu_charts: ['Statistiche', 'Charts & stats', 'Estatísticas', 'Estadísticas', 'Статистика', 'Statistiques', 'Statistik', '統計', '统计'],
@@ -191,6 +192,7 @@
 		/* intestazioni della tabella e menu: testi originali di Spiderweb, in inglese */
 		[].forEach.call(document.querySelectorAll('#spotsTable thead th'), function (th) {
 			var x = th.textContent.trim();
+			if (x === 'Mode') { setText(th, t('th_mode')); }
 			if (x === 'Country') { setText(th, t('th_country')); }
 			if (x === 'Comments') { setText(th, t('th_comments')); }
 		});
