@@ -923,3 +923,12 @@ html[data-bs-theme="light"] .wc-flag .fi {
 @media (max-width: 991.98px) {
 	.wc-col-country, .wc-col-comments { display: none; }
 }
+
+/* larghezze delle colonne (gli stili scritti nella pagina sono bloccati dalla sicurezza) */
+#spotsTable col:nth-child(1) { width: 13%; }
+#spotsTable col:nth-child(2) { width: 13%; }
+#spotsTable col:nth-child(3) { width: 13%; }
+#spotsTable col:nth-child(4) { width: 15%; }
+#spotsTable col:nth-child(5) { width: 5%; }
+#spotsTable col:nth-child(6) { width: 11%; }
+#spotsTable col:nth-child(8) { width: 8%; }
