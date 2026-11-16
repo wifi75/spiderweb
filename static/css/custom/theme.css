@@ -895,3 +895,9 @@ html[data-bs-theme="light"] .wc-flag .fi {
 	background: var(--wc-accent);
 	color: #fff;
 }
+
+/* nominativi e icone sempre su una riga */
+#spotsTable tbody td:nth-child(1),
+#spotsTable tbody td:nth-child(4) {
+	white-space: nowrap;
+}
