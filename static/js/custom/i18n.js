@@ -41,18 +41,19 @@
 		connect: ['Collega il tuo cluster', 'Connect your cluster', 'Conecte o seu cluster', 'Conecta tu cluster', 'Подключить свой кластер', 'Connectez votre cluster', 'Verbinde deinen Cluster', 'あなたのクラスターを接続', '连接你的集群'],
 		telnet_title: ['Accesso telnet', 'Telnet access', 'Acesso telnet', 'Acceso telnet', 'Доступ по telnet', 'Accès telnet', 'Telnet-Zugang', 'Telnetアクセス', 'Telnet 访问'],
 		promo_text: [
-			'Il software gratuito e open source per radioamatori: FT8, FT4, CW, RTTY, SSTV e molto altro, per Windows, Linux e macOS.',
-			'Free, open-source software for radio amateurs: FT8, FT4, CW, RTTY, SSTV and much more, for Windows, Linux and macOS.',
-			'O software gratuito e de código aberto para radioamadores: FT8, FT4, CW, RTTY, SSTV e muito mais, para Windows, Linux e macOS.',
-			'El software gratuito y de código abierto para radioaficionados: FT8, FT4, CW, RTTY, SSTV y mucho más, para Windows, Linux y macOS.',
-			'Бесплатное программное обеспечение с открытым кодом для радиолюбителей: FT8, FT4, CW, RTTY, SSTV и многое другое для Windows, Linux и macOS.',
-			'Le logiciel gratuit et open source pour radioamateurs : FT8, FT4, CW, RTTY, SSTV et bien plus, pour Windows, Linux et macOS.',
-			'Die kostenlose Open-Source-Software für Funkamateure: FT8, FT4, CW, RTTY, SSTV und vieles mehr, für Windows, Linux und macOS.',
-			'アマチュア無線家のための無料のオープンソースソフトウェア。FT8、FT4、CW、RTTY、SSTVなど、Windows・Linux・macOSに対応。',
-			'面向业余无线电爱好者的免费开源软件：FT8、FT4、CW、RTTY、SSTV 等，支持 Windows、Linux 和 macOS。'
+			'Aurora decodifica, trasmette e gestisce i tuoi QSO in un solo programma, per tutti i modi, più i satelliti. Cascata in tempo reale, scheda DXCC automatica, Fox e UltraFOX per le DXpedition, Contest, finestre che puoi spostare su un secondo monitor, controllo da telefono e CAT per oltre 300 radio.',
+			'Aurora decodes, transmits and runs your QSOs in a single program, for every mode, plus satellites. Real-time waterfall, automatic DXCC card, Fox and UltraFOX for DXpeditions, contests, windows you can move to a second monitor, phone control and CAT for over 300 radios.',
+			'O Aurora decodifica, transmite e gere os seus QSOs num só programa, para todos os modos, além de satélites. Cascata em tempo real, ficha DXCC automática, Fox e UltraFOX para as DXpeditions, concursos, janelas que pode mover para um segundo monitor, controlo pelo telemóvel e CAT para mais de 300 rádios.',
+			'Aurora decodifica, transmite y gestiona tus QSO en un solo programa, para todos los modos, además de satélites. Cascada en tiempo real, ficha DXCC automática, Fox y UltraFOX para las DXpediciones, concursos, ventanas que puedes mover a un segundo monitor, control desde el móvil y CAT para más de 300 equipos.',
+			'Aurora декодирует, передаёт и ведёт ваши QSO в одной программе, во всех видах работы, а также через спутники. Водопад в реальном времени, автоматическая карточка DXCC, Fox и UltraFOX для DX-экспедиций, соревнования, окна, которые можно перенести на второй монитор, управление с телефона и CAT для более чем 300 трансиверов.',
+			'Aurora décode, émet et gère vos QSO dans un seul programme, pour tous les modes, plus les satellites. Cascade en temps réel, fiche DXCC automatique, Fox et UltraFOX pour les DXpéditions, concours, fenêtres déplaçables sur un second écran, contrôle depuis le téléphone et CAT pour plus de 300 radios.',
+			'Aurora dekodiert, sendet und verwaltet deine QSOs in einem einzigen Programm, für alle Betriebsarten, dazu Satelliten. Wasserfall in Echtzeit, automatische DXCC-Karte, Fox und UltraFOX für DXpeditionen, Contests, Fenster, die du auf einen zweiten Monitor schieben kannst, Steuerung per Smartphone und CAT für über 300 Funkgeräte.',
+			'Aurora は、すべてのモードと衛星に対応し、QSO のデコード、送信、管理を1つのプログラムで行います。リアルタイムのウォーターフォール、DXCC の自動管理、DX ペディション向けの Fox と UltraFOX、コンテスト、2台目のモニターに移せるウィンドウ、スマートフォンからの操作、300 機種以上の無線機に対応する CAT。',
+			'Aurora 在一个程序中完成 QSO 的解码、发射与管理，支持所有模式，还支持卫星。实时瀑布图、自动 DXCC 卡片、面向 DX 远征的 Fox 与 UltraFOX、比赛、可移到第二台显示器的窗口、手机控制，以及支持 300 多种电台的 CAT。'
 		],
 		promo_btn: ['Scarica', 'Download', 'Baixar', 'Descargar', 'Скачать', 'Télécharger', 'Herunterladen', 'ダウンロード', '下载'],
 		promo_new: ['Nuova app', 'New app', 'Novo app', 'Nueva app', 'Новинка', 'Nouvelle app', 'Neue App', '新アプリ', '新应用'],
+		promo_sat: ['Satelliti', 'Satellites', 'Satélites', 'Satélites', 'Спутники', 'Satellites', 'Satelliten', '衛星', '卫星'],
 		promo_free: ['Gratis', 'Free', 'Grátis', 'Gratis', 'Бесплатно', 'Gratuit', 'Kostenlos', '無料', '免费'],
 		promo_title: [
 			'Aurora, la tua stazione radio multimodo',
