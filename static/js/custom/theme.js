@@ -367,9 +367,10 @@
 			var rows = body.querySelectorAll('tr');
 			for (var i = 0; i < rows.length; i++) {
 				decorateRow(rows[i]);
+				applyTextFilter(rows[i]);
 			}
 			/* le righe nuove portano la classe table-info: un solo bip per blocco di spot */
-			if (body.querySelector('tr.table-info')) {
+			if (body.querySelector('tr.table-info:not([style*="display: none"])')) {
 				playBeep(false);
 			}
 			busy = false;
@@ -378,6 +379,20 @@
 	}
 
 	/* ---------- filtri rapidi ---------- */
+	var textQuery = '';
+	function applyTextFilter(tr) {
+		var q = textQuery.trim().toLowerCase();
+		var show = true;
+		if (q) {
+			var hay = (tr.textContent || '').toLowerCase();
+			show = q.split(',').some(function (alt) {
+				var words = alt.trim().split(/\s+/).filter(Boolean);
+				return words.length > 0 && words.every(function (w) { return hay.indexOf(w) !== -1; });
+			});
+		}
+		tr.style.display = show ? '' : 'none';
+	}
+
 	function selectOnly(selectEl, wanted) {
 		var all = wanted.length === 0;
 		for (var i = 0; i < selectEl.options.length; i++) {
@@ -415,6 +430,7 @@
 			if (ft8) {
 				ft8.checked = state.noft8;
 			}
+			try { localStorage.setItem('wc-filters', JSON.stringify(state)); } catch (e) { /* storage non disponibile */ }
 			if (typeof window.refresh_timer === 'function') {
 				window.refresh_timer();
 			}
@@ -450,9 +466,11 @@
 
 		hf.forEach(function (v) {
 			var p = mk(v + 'm', function () { toggle(state.bands, [v], p); });
+			p.dataset.k = 'b:' + v;
 		});
 		if (vhf.length) {
 			var pv = mk('VHF+', function () { toggle(state.bands, vhf, pv); });
+			pv.dataset.k = 'b:vhf';
 		}
 
 		var sep = document.createElement('span');
@@ -461,6 +479,7 @@
 
 		[['CW', 'cw'], ['SSB', 'phone'], ['Digi', 'digi']].forEach(function (m) {
 			var p = mk(m[0], function () { toggle(state.modes, [m[1]], p); });
+			p.dataset.k = 'm:' + m[1];
 		});
 		var pf = mk(L('noft8'), function () {
 			state.noft8 = !state.noft8;
@@ -468,6 +487,23 @@
 			allPill.classList.toggle('on', !state.bands.length && !state.modes.length && !state.noft8);
 			apply();
 		});
+
+		/* filtro sul testo: parole separate da spazio = tutte presenti, virgola = alternative */
+		var txt = document.createElement('input');
+		txt.type = 'search';
+		txt.className = 'wc-textfilter';
+		txt.placeholder = L('textfilter');
+		txt.setAttribute('aria-label', L('textfilter'));
+		bar.appendChild(txt);
+		var tf = document.getElementById('bodyspot');
+		function runTextFilter() {
+			textQuery = txt.value;
+			try { localStorage.setItem('wc-textfilter', txt.value); } catch (e) { /* ignora */ }
+			if (tf) { [].forEach.call(tf.rows, applyTextFilter); }
+		}
+		txt.addEventListener('input', runTextFilter);
+		try { txt.value = localStorage.getItem('wc-textfilter') || ''; } catch (e) { /* ignora */ }
+		textQuery = txt.value;
 
 		/* il pulsante imbuto (apre il pannello filtri) va nella stessa riga, dopo "Senza FT8" */
 		var funnel = document.querySelector('button[data-bs-target="#collapseFilters"]');
@@ -479,6 +515,25 @@
 				oldRow.style.display = 'none';
 			}
 		}
+
+		/* ripristina i filtri scelti l'ultima volta */
+		try {
+			var saved = JSON.parse(localStorage.getItem('wc-filters') || 'null');
+			if (saved && (saved.bands.length || saved.modes.length || saved.noft8)) {
+				state.bands = saved.bands.slice(); state.modes = saved.modes.slice(); state.noft8 = !!saved.noft8;
+				allPill.classList.remove('on');
+				pills.forEach(function (p) {
+					var k = p.dataset.k;
+					if (!k) { return; }
+					var on = k === 'b:vhf' ? vhf.some(function (v) { return state.bands.indexOf(v) !== -1; })
+						: k.indexOf('b:') === 0 ? state.bands.indexOf(k.slice(2)) !== -1
+						: state.modes.indexOf(k.slice(2)) !== -1;
+					p.classList.toggle('on', on);
+				});
+				pf.classList.toggle('on', state.noft8);
+				apply();
+			}
+		} catch (e) { /* filtri salvati non validi */ }
 
 		var form = document.getElementById('form-filters');
 		if (form) {

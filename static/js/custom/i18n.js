@@ -37,6 +37,7 @@
 	/* ordine: it, en, pt, es, ru, fr, de, ja, zh */
 	var STR = {
 		all: ['Tutti', 'All', 'Todos', 'Todos', 'Все', 'Tous', 'Alle', 'すべて', '全部'],
+		textfilter: ['Cerca nel testo (es. CQ JA, FT8)', 'Search text (e.g. CQ JA, FT8)', 'Pesquisar texto (ex. CQ JA, FT8)', 'Buscar texto (ej. CQ JA, FT8)', 'Поиск по тексту (напр. CQ JA, FT8)', 'Chercher du texte (ex. CQ JA, FT8)', 'Text suchen (z. B. CQ JA, FT8)', 'テキスト検索 (例: CQ JA, FT8)', '搜索文本 (如 CQ JA, FT8)'],
 		noft8: ['Senza FT8', 'No FT8', 'Sem FT8', 'Sin FT8', 'Без FT8', 'Sans FT8', 'Ohne FT8', 'FT8を除く', '不含 FT8'],
 		connect: ['Collega il tuo cluster', 'Connect your cluster', 'Conecte o seu cluster', 'Conecta tu cluster', 'Подключить свой кластер', 'Connectez votre cluster', 'Verbinde deinen Cluster', 'あなたのクラスターを接続', '连接你的集群'],
 		telnet_title: ['Accesso telnet', 'Telnet access', 'Acesso telnet', 'Acceso telnet', 'Доступ по telnet', 'Accès telnet', 'Telnet-Zugang', 'Telnetアクセス', 'Telnet 访问'],

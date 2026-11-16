@@ -834,3 +834,20 @@ html[data-bs-theme="light"] .wc-flag .fi {
 #wc-theme-toggle {
 	margin-right: 0.5rem;
 }
+
+/* filtro sul testo */
+.wc-quickbar .wc-textfilter {
+	flex: 0 1 220px;
+	min-width: 120px;
+	height: 32px;
+	padding: 0 12px;
+	border-radius: 16px;
+	border: 1px solid var(--wc-line);
+	background: var(--wc-surface);
+	color: var(--wc-text);
+	font-size: .9rem;
+}
+.wc-quickbar .wc-textfilter:focus {
+	outline: 2px solid var(--wc-accent);
+	outline-offset: 1px;
+}
