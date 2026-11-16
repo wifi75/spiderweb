@@ -303,6 +303,26 @@
 		return isNaN(n) ? 0 : n;
 	}
 
+	/* modo dello spot: dal commento, altrimenti dalla frequenza (piano di banda IARU regione 1, approssimato) */
+	var MODE_WORDS = [['FT8', /\bft8\b/i], ['FT4', /\bft4\b/i], ['JS8', /\bjs8/i], ['RTTY', /\brtty\b/i], ['PSK', /\bpsk\d*\b/i],
+		['SSTV', /\bsstv\b/i], ['WSPR', /\bwspr\b/i], ['CW', /\bcw\b/i], ['SSB', /\b(ssb|usb|lsb)\b/i], ['FM', /\bfm\b/i]];
+	var CW_LIMIT = [[1800, 1838], [3500, 3570], [7000, 7040], [10100, 10130], [14000, 14070], [18068, 18095], [21000, 21070], [24890, 24915], [28000, 28070]];
+	var DIGI_FREQ = [[1840, 1843], [3573, 3600], [5357, 5358], [7040, 7060], [10130, 10150], [14070, 14099], [18095, 18109], [21070, 21100], [24915, 24929], [28070, 28120], [50300, 50320]];
+	function inRanges(f, list) {
+		return list.some(function (r) { return f >= r[0] && f < r[1]; });
+	}
+	function guessMode(text, khz) {
+		for (var i = 0; i < MODE_WORDS.length; i++) {
+			if (MODE_WORDS[i][1].test(text)) {
+				return MODE_WORDS[i][0];
+			}
+		}
+		if (inRanges(khz, CW_LIMIT)) { return 'CW'; }
+		if (inRanges(khz, DIGI_FREQ)) { return 'DIGI'; }
+		if (khz >= 1800 && khz < 29700) { return 'SSB'; }
+		return '';
+	}
+
 	function decorateRow(tr) {
 		if (tr.dataset.wc === '1') {
 			return;
@@ -313,6 +333,13 @@
 		if (badge) {
 			var cls = bandClass(parseFreq(badge.textContent));
 			badge.className = 'wc-band ' + cls;
+			var mode = guessMode(tr.textContent, parseFreq(badge.textContent));
+			if (mode) {
+				var mt = document.createElement('span');
+				mt.className = 'wc-mode wc-m-' + mode.toLowerCase();
+				mt.textContent = mode;
+				badge.parentNode.insertBefore(mt, badge.nextSibling);
+			}
 		}
 
 		/* la colonna UTC e un <div> messo direttamente nella riga (non una cella): lo mettiamo in una vera <td>,

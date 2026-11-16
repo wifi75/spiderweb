@@ -851,3 +851,23 @@ html[data-bs-theme="light"] .wc-flag .fi {
 	outline: 2px solid var(--wc-accent);
 	outline-offset: 1px;
 }
+
+/* modo dello spot, accanto alla banda */
+.wc-mode {
+	display: inline-block;
+	margin-left: 6px;
+	padding: 1px 6px;
+	border-radius: 5px;
+	font-size: .68rem;
+	font-weight: 700;
+	letter-spacing: .03em;
+	vertical-align: middle;
+	color: var(--wc-muted);
+	border: 1px solid var(--wc-line);
+}
+.wc-mode.wc-m-ft8, .wc-mode.wc-m-ft4, .wc-mode.wc-m-digi, .wc-mode.wc-m-js8, .wc-mode.wc-m-psk, .wc-mode.wc-m-rtty, .wc-mode.wc-m-wspr {
+	color: #7c5cff;
+	border-color: #7c5cff;
+}
+.wc-mode.wc-m-cw { color: #d97706; border-color: #d97706; }
+.wc-mode.wc-m-ssb, .wc-mode.wc-m-fm { color: #1f9d63; border-color: #1f9d63; }
