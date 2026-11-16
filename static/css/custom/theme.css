@@ -505,10 +505,15 @@ html[data-bs-theme="light"] .img-flag {
 	text-transform: uppercase;
 }
 
+.wc-promo-title {
+	flex-wrap: wrap;
+}
+
+/* sulla stessa riga di "Aurora" e "Gratis", con un po' di spazio in piu */
 .wc-promo-head {
 	font-size: 1.08rem;
 	font-weight: 600;
-	margin-top: 4px;
+	margin-left: 16px;
 }
 
 .wc-promo-text {
