@@ -404,58 +404,134 @@ html[data-bs-theme="light"] .img-flag {
 	line-height: 1.55;
 }
 
-/* ---------- Annuncio Aurora: una riga sottile, si puo chiudere ---------- */
+/* ---------- Annuncio Aurora: riquadro con logo, titolo, caratteristiche e pulsante Scarica ---------- */
 .wc-promo {
+	position: relative;
 	display: flex;
 	align-items: center;
-	gap: 10px;
-	margin: 0 0.5rem 0.25rem;
-	padding: 5px 12px;
-	background: var(--wc-surface);
+	gap: 16px;
+	margin: 6px 0.5rem 4px;
+	padding: 12px 44px 12px 16px;
+	background:
+		radial-gradient(circle at 100% 120%, color-mix(in srgb, var(--wc-accent) 22%, transparent) 0, transparent 55%),
+		var(--wc-surface);
 	border: 1px solid var(--wc-line);
-	border-left: 4px solid var(--wc-accent);
-	border-radius: 8px;
-	font-size: 0.85rem;
+	border-radius: 12px;
 	color: var(--wc-text);
+	overflow: hidden;
 }
 
 .wc-promo[hidden] {
 	display: none;
 }
 
-.wc-promo-tag {
+.wc-promo-logo {
+	flex: 0 0 auto;
+	width: 52px;
+	height: 52px;
+	line-height: 0;
+}
+
+.wc-promo-logo svg {
+	width: 100%;
+	height: 100%;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.wc-promo-body {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.wc-promo-title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 1.05rem;
+	line-height: 1.2;
+}
+
+.wc-promo-title strong {
 	font-weight: 700;
-	color: var(--wc-accent);
 	letter-spacing: 0.3px;
 }
 
+.wc-promo-free {
+	background: #1f9d63;
+	color: #ffffff;
+	border-radius: 999px;
+	padding: 0 9px;
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.4px;
+	text-transform: uppercase;
+}
+
+.wc-promo-head {
+	font-size: 0.92rem;
+	font-weight: 500;
+	margin-top: 2px;
+}
+
 .wc-promo-text {
-	flex: 1;
 	color: var(--wc-muted);
+	font-size: 0.82rem;
+	margin-top: 2px;
+}
+
+.wc-promo-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	margin-top: 6px;
+}
+
+.wc-promo-chips span {
+	background: color-mix(in srgb, var(--wc-accent) 16%, transparent);
+	border: 1px solid color-mix(in srgb, var(--wc-accent) 40%, transparent);
+	color: var(--wc-text);
+	border-radius: 999px;
+	padding: 0 9px;
+	font-size: 0.72rem;
+	font-weight: 600;
+	line-height: 1.55;
 }
 
 .wc-promo-btn {
-	color: var(--wc-accent);
-	border: 1px solid var(--wc-accent);
-	border-radius: 999px;
-	padding: 1px 12px;
-	text-decoration: none;
-	white-space: nowrap;
-}
-
-.wc-promo-btn:hover {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
 	background: var(--wc-accent);
 	color: #08121f;
+	border-radius: 999px;
+	padding: 8px 20px;
+	font-weight: 700;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: filter 0.12s ease, box-shadow 0.12s ease, transform 0.12s ease;
+}
+
+.wc-promo-btn:hover,
+.wc-promo-btn:focus-visible {
+	color: #08121f;
+	filter: brightness(1.15);
+	box-shadow: 0 0 0 4px color-mix(in srgb, var(--wc-accent) 38%, transparent);
+	transform: translateY(-1px);
 }
 
 .wc-promo-close {
+	position: absolute;
+	top: 6px;
+	right: 8px;
 	background: transparent;
 	border: 0;
 	color: var(--wc-muted);
-	font-size: 1.25rem;
+	font-size: 1.3rem;
 	line-height: 1;
 	cursor: pointer;
-	padding: 0 4px;
+	padding: 2px 7px;
 }
 
 .wc-promo-close:hover {
@@ -463,12 +539,25 @@ html[data-bs-theme="light"] .img-flag {
 }
 
 @media screen and (max-width: 768px) {
-	.wc-promo-text {
+	.wc-promo {
+		flex-wrap: wrap;
+		gap: 10px 12px;
+		padding: 10px 40px 10px 12px;
+	}
+
+	.wc-promo-logo {
+		width: 40px;
+		height: 40px;
+	}
+
+	.wc-promo-text,
+	.wc-promo-chips {
 		display: none;
 	}
 
-	.wc-promo {
-		justify-content: space-between;
+	.wc-promo-btn {
+		width: 100%;
+		justify-content: center;
 	}
 }
 
@@ -539,22 +628,36 @@ html[data-bs-theme="light"] .img-flag {
 	border-bottom-color: var(--wc-accent) !important;
 }
 
-/* Voce Aurora nel menu: pulsante evidenziato, lo sfondo si illumina al passaggio del mouse */
-.navbar-nav .nav-link.wc-nav-aurora {
-	color: #08121f;
-	background-color: var(--wc-accent);
+/* Voci del menu in alto: tutte pulsanti tondi uguali, ognuna con sfondo e testo propri */
+.navbar-nav .nav-link {
+	--wc-nav-bg: #3a4350;
+	--wc-nav-tx: #ffffff;
+	color: var(--wc-nav-tx);
+	background-color: var(--wc-nav-bg);
 	border-radius: 999px;
-	padding: 0.2rem 0.95rem;
+	padding: 0.25rem 1rem;
 	margin: 0.3rem 0 0.3rem 0.5rem;
 	font-weight: 600;
-	transition: filter 0.12s ease, box-shadow 0.12s ease;
+	transition: filter 0.12s ease, box-shadow 0.12s ease, transform 0.12s ease;
 }
 
-.navbar-nav .nav-link.wc-nav-aurora:hover,
-.navbar-nav .nav-link.wc-nav-aurora:focus-visible {
-	color: #08121f;
+.navbar-nav .nav-item:nth-child(1) > .nav-link { --wc-nav-bg: #7c5cff; --wc-nav-tx: #ffffff; }
+.navbar-nav .nav-item:nth-child(2) > .nav-link { --wc-nav-bg: #f5a524; --wc-nav-tx: #2b1a00; }
+.navbar-nav .nav-item:nth-child(3) > .nav-link { --wc-nav-bg: #3bb8e8; --wc-nav-tx: #04202d; }
+.navbar-nav .nav-item:nth-child(4) > .nav-link { --wc-nav-bg: #1f9d63; --wc-nav-tx: #ffffff; }
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus-visible {
+	color: var(--wc-nav-tx);
 	filter: brightness(1.15);
-	box-shadow: 0 0 0 3px color-mix(in srgb, var(--wc-accent) 40%, transparent);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--wc-nav-bg) 45%, transparent);
+	transform: translateY(-1px);
+}
+
+/* pagina corrente: contorno bianco */
+.navbar-nav .nav-link.active {
+	color: var(--wc-nav-tx);
+	box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85);
 }
 
 /* Le voci del menu in alto restano su una riga */

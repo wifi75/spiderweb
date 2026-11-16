@@ -51,7 +51,19 @@
 			'アマチュア無線家のための無料のオープンソースソフトウェア。FT8、FT4、CW、RTTY、SSTVなど、Windows・Linux・macOSに対応。',
 			'面向业余无线电爱好者的免费开源软件：FT8、FT4、CW、RTTY、SSTV 等，支持 Windows、Linux 和 macOS。'
 		],
-		promo_btn: ['Scopri Aurora', 'Discover Aurora', 'Conheça o Aurora', 'Descubre Aurora', 'Узнать об Aurora', 'Découvrir Aurora', 'Aurora entdecken', 'Auroraを見る', '了解 Aurora'],
+		promo_btn: ['Scarica', 'Download', 'Baixar', 'Descargar', 'Скачать', 'Télécharger', 'Herunterladen', 'ダウンロード', '下载'],
+		promo_free: ['Gratis', 'Free', 'Grátis', 'Gratis', 'Бесплатно', 'Gratuit', 'Kostenlos', '無料', '免费'],
+		promo_title: [
+			'Aurora, la tua stazione radio multimodo',
+			'Aurora, your multimode radio station',
+			'Aurora, a sua estação de rádio multimodo',
+			'Aurora, tu estación de radio multimodo',
+			'Aurora — ваша многорежимная радиостанция',
+			'Aurora, votre station radio multimode',
+			'Aurora, deine Multimode-Funkstation',
+			'Aurora、あなたのマルチモード無線局',
+			'Aurora，你的多模式电台'
+		],
 		promo_close: ['Chiudi l\'annuncio', 'Close the ad', 'Fechar o anúncio', 'Cerrar el anuncio', 'Закрыть объявление', 'Fermer l\'annonce', 'Anzeige schließen', '広告を閉じる', '关闭广告'],
 		spots_list: ['Elenco spot', 'Spots list', 'Lista de spots', 'Lista de spots', 'Список спотов', 'Liste des spots', 'Spot-Liste', 'スポット一覧', 'Spot 列表'],
 		th_country: ['Paese', 'Country', 'País', 'País', 'Страна', 'Pays', 'Land', '国', '国家'],
