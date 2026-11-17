@@ -1,7 +1,7 @@
 {% extends "_base.html" %}
-{% set seo_title = 'DX Cluster IU3CYV - Live DX Spots for Radio Amateurs (FT8, CW, SSB)' %}
-{% set seo_desc = 'Live web DX Cluster: real-time DX spots on HF and VHF with band, mode and country. Filter FT8, CW and SSB, find DXpeditions, listen on WebSDR. Telnet cluster.iu3cyv.eu:7300.' %}
-{% set seo_path = '/' %}
+{% set seo_title = seo_title|default('DX Cluster IU3CYV - Live DX Spots for Radio Amateurs (FT8, CW, SSB)') %}
+{% set seo_desc = seo_desc|default('Live web DX Cluster: real-time DX spots on HF and VHF with band, mode and country. Filter FT8, CW and SSB, find DXpeditions, listen on WebSDR. Telnet cluster.iu3cyv.eu:7300.') %}
+{% set seo_path = seo_path|default('/') %}
 
 <head>
 	{% block seo_jsonld %}
