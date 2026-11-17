@@ -71,24 +71,74 @@
 		var box = document.createElement('div');
 		box.id = 'wc-langs';
 		box.className = 'wc-langs';
-		box.setAttribute('role', 'group');
-		box.setAttribute('aria-label', i18n.t('lang_label'));
-		i18n.langs.forEach(function (l) {
-			var b = document.createElement('button');
-			b.type = 'button';
-			b.className = 'wc-flag' + (l[0] === i18n.lang ? ' on' : '');
-			b.title = l[1];
-			b.setAttribute('aria-label', l[1]);
+
+		function flagEl(code) {
 			var f = document.createElement('span');
-			f.className = 'fi fi-' + (FLAG_OF[l[0]] || l[0]);
-			b.appendChild(f);
-			b.addEventListener('click', function () {
+			f.className = 'fi fi-' + (FLAG_OF[code] || code);
+			return f;
+		}
+		var current = i18n.langs.filter(function (l) { return l[0] === i18n.lang; })[0] || i18n.langs[0];
+
+		var btn = document.createElement('button');
+		btn.type = 'button';
+		btn.className = 'wc-lang-btn';
+		btn.setAttribute('aria-haspopup', 'listbox');
+		btn.setAttribute('aria-expanded', 'false');
+		btn.setAttribute('aria-label', i18n.t('lang_label'));
+		btn.title = i18n.t('lang_label');
+		btn.appendChild(flagEl(current[0]));
+		var code = document.createElement('span');
+		code.className = 'wc-lang-code';
+		code.textContent = current[0].toUpperCase();
+		btn.appendChild(code);
+		var chev = document.createElement('i');
+		chev.className = 'bi-chevron-down';
+		chev.setAttribute('aria-hidden', 'true');
+		btn.appendChild(chev);
+
+		var menu = document.createElement('ul');
+		menu.className = 'wc-lang-menu';
+		menu.setAttribute('role', 'listbox');
+		menu.hidden = true;
+		i18n.langs.forEach(function (l) {
+			var li = document.createElement('li');
+			li.setAttribute('role', 'option');
+			var item = document.createElement('button');
+			item.type = 'button';
+			item.className = 'wc-lang-item' + (l[0] === i18n.lang ? ' on' : '');
+			item.appendChild(flagEl(l[0]));
+			var name = document.createElement('span');
+			name.textContent = l[1];
+			item.appendChild(name);
+			item.addEventListener('click', function () {
+				menu.hidden = true;
+				btn.setAttribute('aria-expanded', 'false');
 				if (l[0] !== i18n.lang) {
 					i18n.setLang(l[0]);
 				}
 			});
-			box.appendChild(b);
+			li.appendChild(item);
+			menu.appendChild(li);
 		});
+
+		function close() {
+			menu.hidden = true;
+			btn.setAttribute('aria-expanded', 'false');
+		}
+		btn.addEventListener('click', function (e) {
+			e.stopPropagation();
+			var open = menu.hidden;
+			menu.hidden = !open;
+			btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+		});
+		document.addEventListener('click', function (e) {
+			if (!box.contains(e.target)) { close(); }
+		});
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape') { close(); }
+		});
+		box.appendChild(btn);
+		box.appendChild(menu);
 		sound.parentNode.insertBefore(box, sound);
 	}
 

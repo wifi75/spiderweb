@@ -729,44 +729,90 @@ html[data-bs-theme="light"] .img-flag {
 	color: #08121f;
 }
 
-/* ---------- Bandiere delle lingue (barra scura in alto) ---------- */
+/* ---------- Selezione della lingua: menu a tendina ---------- */
 .wc-langs {
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 3px;
+	position: relative;
 	margin-right: 0.75rem;
 }
 
-/* bandierine delle lingue: nessuno sfondo; la lingua attiva e piena, le altre attenuate */
-.wc-flag {
-	background: transparent !important;
-	border: 0 !important;
-	border-bottom: 2px solid transparent !important;
-	border-radius: 0 !important;
-	padding: 3px 3px 2px;
-	line-height: 0;
-	opacity: 0.55;
+.wc-lang-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	height: 32px;
+	padding: 0 10px;
+	border: 1px solid var(--wc-line);
+	border-radius: 16px;
+	background: var(--wc-surface);
+	color: var(--wc-text);
+	font-size: 0.85rem;
+	font-weight: 600;
 	cursor: pointer;
-	transition: opacity 0.12s ease, transform 0.12s ease;
+	transition: background-color 0.12s ease, border-color 0.12s ease;
 }
 
-.wc-flag .fi {
+.wc-lang-btn:hover,
+.wc-lang-btn:focus-visible,
+.wc-lang-btn[aria-expanded="true"] {
+	background: color-mix(in srgb, var(--wc-accent) 16%, transparent);
+	border-color: var(--wc-accent);
+}
+
+.wc-lang-btn .bi-chevron-down {
+	font-size: 0.7rem;
+	color: var(--wc-muted);
+}
+
+.wc-langs .fi {
 	width: 22px;
 	height: 16px;
 	border-radius: 2px;
-	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
+	flex: 0 0 auto;
+	box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.45);
 }
 
-.wc-flag:hover,
-.wc-flag:focus-visible {
-	opacity: 1;
-	transform: translateY(-1px);
+.wc-lang-menu {
+	position: absolute;
+	top: calc(100% + 6px);
+	right: 0;
+	z-index: 1080;
+	min-width: 180px;
+	margin: 0;
+	padding: 6px;
+	list-style: none;
+	background: var(--wc-surface);
+	border: 1px solid var(--wc-line);
+	border-radius: 12px;
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
 }
 
-.wc-flag.on {
-	opacity: 1;
-	border-bottom-color: var(--wc-accent) !important;
+.wc-lang-menu[hidden] {
+	display: none;
+}
+
+.wc-lang-item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+	padding: 7px 10px;
+	border: 0;
+	border-radius: 8px;
+	background: transparent;
+	color: var(--wc-text);
+	font-size: 0.92rem;
+	text-align: left;
+	cursor: pointer;
+}
+
+.wc-lang-item:hover,
+.wc-lang-item:focus-visible {
+	background: color-mix(in srgb, var(--wc-accent) 16%, transparent);
+}
+
+.wc-lang-item.on {
+	font-weight: 700;
+	color: var(--wc-accent);
 }
 
 /* ---------- Barra in alto senza sfondo scuro: si fonde con la pagina ---------- */
@@ -793,10 +839,6 @@ header .navbar .navbar-toggler {
 
 html[data-bs-theme="light"] header .navbar .navbar-toggler-icon {
 	filter: invert(1);
-}
-
-html[data-bs-theme="light"] .wc-flag .fi {
-	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.28);
 }
 
 /* Voci del menu in alto: tutte pulsanti tondi uguali, ognuna con sfondo e testo propri */
