@@ -53,6 +53,16 @@ Regole:
 
 Google Search Console: proprietà `https://webcluster.iu3cyv.eu/` verificata con il file `static/google306a558ee6b7e767.html` (non rimuoverlo). Sitemap inviata il 17/11/2026 e indicizzazione richiesta per home, guide, statistiche e propagazione.
 
+## Nodo DXSpider
+
+Il portale legge gli spot dal database MariaDB riempito da DXSpider (servizio `dxspider`, cartella `/spider`, ramo `mojo`).
+
+- **Versione installata:** DXSpider v1.57 build 687 (git `9b55f03f`), aggiornata il 17/11/2026 dalla build 536. Il numero si vede nel piè di pagina del portale e in "Statistiche".
+- **Sorgente:** il repository originale `scm.dxcluster.org` non risponde più; `origin` punta al mirror `https://github.com/EA3CV/dxspider.git` (commit di Dirk Koopman). Aggiornare con `git pull` in `/spider` e riavviare il nodo dalla console con `shutdown` (systemd lo rialza da solo).
+- **Variabile rinominata:** nelle versioni nuove `$main::regreq` è diventata `$main::reqreg`; è già aggiornata in `/spider/scripts/startup`.
+- **Collegamenti:** il nodo ha un solo collegamento valido (OE3XHQ-1), che cadeva ogni 15 minuti. In `/spider/local_cmd/crontab` il controllo di OE3XHQ-1 gira ogni minuto, e per quel nodo il controllo di ping è disattivato (`set/pinginterval 0 oe3xhq-1`).
+- **Backup prima dell'aggiornamento:** `/home/sysop/backup-dxspider-20261117` (configurazione, `users.v3j`, `user_json`) e tag git `backup-pre-update-20261117`. Per tornare indietro: `git reset --hard backup-pre-update-20261117`, ripristinare `scripts/startup.bak-20261117` e riavviare.
+
 ## Regole da ricordare
 
 - I file `static/js/rel/*.min.js` e `static/css/rel/style.min.css` non si modificano.

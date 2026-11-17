@@ -189,6 +189,10 @@
 			<a href="https://github.com/coulisse/spiderweb/" target="blank" rel="noopener">IU1BOW - Spiderweb</a>
 			&nbsp;
 			<span id="version">v2.7.0</span>
+			{% if dxspider_version and dxspider_version != 'Unknown' %}
+			&nbsp;&middot;&nbsp;
+			<span id="dxspider-version" title="DXSpider node software">{{ dxspider_version }}</span>
+			{% endif %}
 		</div>
 	</footer>
 

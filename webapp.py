@@ -397,7 +397,7 @@ SITE_URL = cfg.get("site_url", "https://webcluster.iu3cyv.eu")
 
 @app.context_processor
 def inject_site_url():
-    return {"site_url": SITE_URL}
+    return {"site_url": SITE_URL, "dxspider_version": whoj.get("version", "Unknown")}
 
 
 def render_guide(template):
