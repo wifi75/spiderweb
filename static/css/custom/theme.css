@@ -171,8 +171,10 @@ html body {
 	white-space: nowrap;
 }
 
-/* "Paese" occupa bandierina + nome e parte dal bordo della bandierina */
+/* "Paese" parte dal bordo della bandierina e scorre sopra la colonna del nome */
 #spotsTable thead th.wc-th-flag {
+	overflow: visible;
+	text-overflow: clip;
 	text-align: left;
 }
 
@@ -1037,4 +1039,24 @@ html[data-bs-theme="light"] header .navbar .navbar-toggler-icon {
 }
 #spotsTable {
 	width: 100%;
+}
+
+/* telefono e schermi stretti: colonne naturali, niente larghezze fisse */
+@media (max-width: 991.98px) {
+	#spotsTable {
+		table-layout: auto;
+	}
+	#spotsTable col {
+		width: auto !important;
+	}
+	#spotsTable thead th {
+		font-size: 0.72rem;
+		letter-spacing: 0.03em;
+		padding-left: 4px;
+		padding-right: 4px;
+		overflow: visible;
+	}
+	#spotsTable thead th.wc-th-flag {
+		visibility: hidden;
+	}
 }
