@@ -926,13 +926,13 @@ html[data-bs-theme="light"] .wc-flag .fi {
 }
 
 /* larghezze delle colonne (gli stili scritti nella pagina sono bloccati dalla sicurezza) */
-#spotsTable col:nth-child(1) { width: 13%; }
-#spotsTable col:nth-child(2) { width: 13%; }
-#spotsTable col:nth-child(3) { width: 13%; }
-#spotsTable col:nth-child(4) { width: 15%; }
-#spotsTable col:nth-child(5) { width: 5%; }
-#spotsTable col:nth-child(6) { width: 11%; }
-#spotsTable col:nth-child(8) { width: 8%; }
+#spotsTable col:nth-child(1) { width: 12%; }
+#spotsTable col:nth-child(2) { width: 10%; }
+#spotsTable col:nth-child(3) { width: 8%; }
+#spotsTable col:nth-child(4) { width: 14%; }
+#spotsTable col:nth-child(5) { width: 4%; }
+#spotsTable col:nth-child(6) { width: 13%; }
+#spotsTable col:nth-child(8) { width: 7%; }
 
 /* testo descrittivo (home e guide) */
 .wc-about {
@@ -983,4 +983,16 @@ html[data-bs-theme="light"] .wc-flag .fi {
 	border-radius: 8px;
 	background: var(--wc-surface);
 	border: 1px solid var(--wc-line);
+}
+
+/* parte degli spot piu stretta e centrata nella pagina */
+#spotsTable,
+.wc-quickbar,
+.wc-about {
+	max-width: 1180px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#spotsTable {
+	width: 100%;
 }
