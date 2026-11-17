@@ -77,6 +77,7 @@
 		th_comments: ['Commenti', 'Comments', 'Comentários', 'Comentarios', 'Комментарии', 'Commentaires', 'Kommentare', 'コメント', '备注'],
 		menu_charts: ['Statistiche', 'Charts & stats', 'Estatísticas', 'Estadísticas', 'Статистика', 'Statistiques', 'Statistik', '統計', '统计'],
 		menu_prop: ['Propagazione', 'Propagation', 'Propagação', 'Propagación', 'Прохождение', 'Propagation', 'Ausbreitung', '電波伝搬', '电波传播'],
+		footer_guide: ['Guida al DX Cluster', 'DX Cluster guide', 'Guia do DX Cluster', 'Guía del DX Cluster', 'Руководство по DX-кластеру', 'Guide du DX Cluster', 'DX-Cluster-Leitfaden', 'DXクラスターガイド', 'DX 集群指南'],
 		footer_privacy: ['Privacy', 'Privacy', 'Privacidade', 'Privacidad', 'Конфиденциальность', 'Confidentialité', 'Datenschutz', 'プライバシー', '隐私'],
 		footer_cookies: ['Cookies', 'Cookies', 'Cookies', 'Cookies', 'Cookies', 'Cookies', 'Cookies', 'Cookie', 'Cookie'],
 		visits: ['Visite uniche al sito:', 'Website unique visits:', 'Visitas únicas ao site:', 'Visitas únicas al sitio:', 'Уникальные посещения сайта:', 'Visites uniques du site :', 'Eindeutige Website-Besuche:', 'サイトの訪問者数:', '网站独立访客：'],
@@ -177,7 +178,9 @@
 	}
 
 	function applyStatic() {
-		document.documentElement.setAttribute('lang', lang);
+		if (!document.querySelector('.wc-article')) { /* le guide hanno una lingua fissa */
+			document.documentElement.setAttribute('lang', lang);
+		}
 
 		[].forEach.call(document.querySelectorAll('[data-i18n]'), function (el) {
 			setText(el, t(el.getAttribute('data-i18n')));
@@ -185,6 +188,10 @@
 		[].forEach.call(document.querySelectorAll('[data-i18n-title]'), function (el) {
 			el.title = t(el.getAttribute('data-i18n-title'));
 		});
+		var gl = document.getElementById('wc-guide-link');
+		if (gl) {
+			gl.setAttribute('href', lang === 'it' ? '/guida-dx-cluster.html' : '/dx-cluster.html');
+		}
 		[].forEach.call(document.querySelectorAll('[data-i18n-aria]'), function (el) {
 			el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
 		});

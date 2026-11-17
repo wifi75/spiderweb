@@ -1,0 +1,118 @@
+{% extends "_base.html" %}
+{% set seo_title = 'Cos’è un DX Cluster? Guida a spot DX, bande e telnet | IU3CYV' %}
+{% set seo_desc = 'Cos’è un DX Cluster, come leggere gli spot DX, quali bande e modi (FT8, CW, SSB) seguire e come collegarsi via telnet a cluster.iu3cyv.eu:7300. Guida pratica per radioamatori.' %}
+{% set seo_path = '/guida-dx-cluster.html' %}
+{% set seo_locale = 'it_IT' %}
+{% block title %}
+<title>Cos’è un DX Cluster? Guida a spot DX, bande e telnet | IU3CYV</title>
+{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block seo_alternates %}
+<link rel="alternate" hreflang="it" href="{{ site_url }}/guida-dx-cluster.html">
+<link rel="alternate" hreflang="en" href="{{ site_url }}/dx-cluster.html">
+<link rel="alternate" hreflang="x-default" href="{{ site_url }}/dx-cluster.html">
+{% endblock %}
+{% block seo_jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Cos’è un DX Cluster? Guida pratica per radioamatori",
+      "inLanguage": "it",
+      "mainEntityOfPage": "{{ site_url }}/guida-dx-cluster.html",
+      "dateModified": "2026-11-17",
+      "publisher": {"@type": "Organization", "name": "IU3CYV DX Cluster", "url": "{{ site_url }}/"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Cos’è uno spot DX?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Uno spot DX è una breve segnalazione che un radioamatore invia al DX cluster quando ascolta o collega una stazione lontana. Contiene la frequenza, il nominativo della stazione DX, lo spotter, l'ora e un commento libero, per esempio il modo e il rapporto di segnale."}},
+        {"@type": "Question", "name": "Come mi collego a questo DX cluster?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Apri un programma telnet e collegati a cluster.iu3cyv.eu sulla porta 7300, poi entra con il tuo nominativo. Puoi anche leggere gli spot direttamente sulla pagina web."}},
+        {"@type": "Question", "name": "Su quali frequenze si trova l'FT8?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Le frequenze FT8 più usate sono 1.840, 3.573, 7.074, 10.136, 14.074, 18.100, 21.074, 24.915, 28.074 e 50.313 MHz."}},
+        {"@type": "Question", "name": "È gratuito?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Sì. Il DX cluster web e l'accesso telnet sono gratuiti per i radioamatori."}}
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+{% block titles %}
+<h1 class="display-4 text-white">Cos’è un DX Cluster?</h1>
+<p class="lead text-light">Guida pratica per radioamatori</p>
+{% endblock %}
+{% block filters %}
+{% endblock %}
+{% block contents %}
+<div class="col mr-3 px-2 wc-article" lang="it">
+	<p>Un <strong>DX cluster</strong> è una rete di nodi in cui i radioamatori si scambiano in tempo reale gli
+		<strong>spot DX</strong>: brevi segnalazioni di stazioni lontane appena ascoltate o collegate. Invece di
+		cercare su tutta la banda, leggi l’elenco e vai subito sulla frequenza dove c’è un paese raro.
+		Questo sito mostra gli spot raccolti dal nostro nodo <strong>DXSpider</strong> in una pagina web aggiornata
+		dal vivo, con filtri per banda, modo e testo, ed è gratuito.</p>
+	<p><a href="/">Apri gli spot DX in tempo reale</a> &middot; <a href="/dx-cluster.html" hreflang="en" lang="en">English guide</a></p>
+
+	<h2>Cos’è uno spot DX</h2>
+	<p>Uno spot è una riga inviata da un operatore: la <strong>frequenza</strong>, il <strong>nominativo della
+		stazione DX</strong>, il nominativo dello <strong>spotter</strong>, l’<strong>ora UTC</strong> e un commento
+		libero, di solito il modo (CW, SSB, FT8, RTTY) e il rapporto di segnale. Il cluster aggiunge il paese della
+		stazione, ricavato dal prefisso del nominativo.</p>
+
+	<h2>Come leggere la tabella degli spot</h2>
+	<ul>
+		<li><strong>DE</strong>: lo spotter, cioè chi ha segnalato la stazione.</li>
+		<li><strong>Freq</strong>: la frequenza in kHz, colorata per banda (da 160 m a 6 m, VHF e oltre).</li>
+		<li><strong>Modo</strong>: CW, SSB, FT8, FT4, RTTY e altri, ricavato dal commento o dalla frequenza.
+			Cliccandolo si vedono solo gli spot di quel modo.</li>
+		<li><strong>DX</strong>: la stazione ascoltata. L’icona con le onde radio apre un WebSDR già sintonizzato
+			sulla frequenza, per verificare se il segnale arriva anche da te.</li>
+		<li><strong>Paese</strong> con la bandiera, <strong>Commenti</strong> e ora <strong>UTC</strong>.</li>
+	</ul>
+	<p>Gli spot nuovi sono evidenziati e, se vuoi, annunciati da un leggero bip che si disattiva con l’icona
+		dell’altoparlante. La barra dei filtri rapidi permette di scegliere bande e modi; la casella di ricerca trova un
+		nominativo, un paese o una parola nel commento.</p>
+
+	<h2>Bande e modi da seguire</h2>
+	<p>In <strong>HF</strong> la banda migliore cambia durante il giorno: 40, 30 e 20 metri sono di solito aperte
+		nel pomeriggio e la sera, 15, 12 e 10 metri si aprono verso mezzogiorno quando l’attività solare è buona, 80 e
+		160 metri sono le bande della notte. I modi digitali si concentrano su frequenze fisse; le frequenze
+		<strong>FT8</strong> più usate sono 1.840, 3.573, 7.074, 10.136, 14.074, 18.100, 21.074, 24.915, 28.074 e
+		50.313 MHz. La <strong>CW</strong> sta nella parte bassa di ogni banda e la <strong>SSB</strong> sopra.
+		La <a href="/propagation.html">pagina della propagazione</a> mostra flusso solare e MUF per aiutarti a
+		scegliere, e la <a href="/plots.html">pagina delle statistiche</a> mostra le bande con più spot nelle varie ore
+		del giorno.</p>
+
+	<h2>Come collegarsi via telnet</h2>
+	<p>Puoi usare il cluster anche da un programma di log o da un terminale. Collegati con un client telnet a
+		<code>cluster.iu3cyv.eu</code> sulla porta <code>7300</code> ed entra con il tuo nominativo:</p>
+	<pre><code>telnet cluster.iu3cyv.eu 7300</code></pre>
+	<p>Comandi DXSpider utili: <code>sh/dx</code> mostra gli ultimi spot, <code>sh/dx on 20m</code> filtra una
+		banda, <code>dx 14074 NOMINATIVO FT8</code> invia un tuo spot.</p>
+
+	<h2>Le DXpedition</h2>
+	<p>Le stazioni di paesi rari sono segnate con un’icona a mappamondo nella tabella quando per quel nominativo è
+		nota un’operazione DX annunciata (dati ADXO di NG3K). Conviene seguirle subito: le DXpedition restano in aria
+		per poco tempo e i pile-up sono più grandi nei primi giorni.</p>
+
+	<h2>Domande frequenti</h2>
+	<h3>È gratuito?</h3>
+	<p>Sì, sia il DX cluster web sia l’accesso telnet sono gratuiti per i radioamatori.</p>
+	<h3>Serve un account?</h3>
+	<p>Per leggere gli spot non serve nessun account. Per inviare spot via telnet si entra con il proprio
+		nominativo.</p>
+	<h3>Quale software c’è dietro?</h3>
+	<p>Il nodo usa <a href="http://www.dxcluster.org/" rel="noopener">DXSpider</a> e l’interfaccia web è basata su
+		<a href="https://github.com/coulisse/spiderweb" rel="noopener">Spiderweb</a> di IU1BOW, con le modifiche di
+		<a href="https://github.com/wifi75/spiderweb" rel="noopener">questo fork</a>.</p>
+</div>
+{% endblock %}
+{% block app_data %}
+{{ super() }}
+{% endblock %}

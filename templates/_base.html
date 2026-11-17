@@ -7,8 +7,28 @@
 	{% block head %}
 
 	<meta charset="utf-8">
-	<meta name="description" content="Web Ham Radio DX Cluster and spot search">
-	<meta name="author" content="Corrado Gerbaldo - IU1BOW">
+	{% set _title = seo_title|default('DX Cluster IU3CYV - Live DX Spots for Radio Amateurs') %}
+	{% set _desc = seo_desc|default('Live web DX Cluster for radio amateurs: real-time DX spots on HF and VHF, filter by band and mode (FT8, CW, SSB), find DXpeditions and listen on WebSDR. Telnet access cluster.iu3cyv.eu:7300.') %}
+	{% set _url = site_url ~ (seo_path|default('/')) %}
+	<meta name="description" content="{{ _desc }}">
+	<meta name="author" content="IU3CYV DX Cluster">
+	<meta name="robots" content="{{ seo_robots|default('index,follow,max-snippet:-1,max-image-preview:large') }}">
+	<link rel="canonical" href="{{ _url }}">
+	{% block seo_alternates %}{% endblock %}
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="IU3CYV DX Cluster">
+	<meta property="og:title" content="{{ _title }}">
+	<meta property="og:description" content="{{ _desc }}">
+	<meta property="og:url" content="{{ _url }}">
+	<meta property="og:image" content="{{ site_url }}/static/images/custom/og-image.png">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:locale" content="{{ seo_locale|default('en_US') }}">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="{{ _title }}">
+	<meta name="twitter:description" content="{{ _desc }}">
+	<meta name="twitter:image" content="{{ site_url }}/static/images/custom/og-image.png">
+	{% block seo_jsonld %}{% endblock %}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#2196f3">
 	<link rel="preconnect" href="/static" crossorigin>
@@ -20,8 +40,8 @@
 
 	<link rel="preload" href="/static/css/rel/style.min.css" as="style">
 	<link rel="stylesheet" href="/static/css/rel/style.min.css">
-	<link rel="stylesheet" href="/static/css/custom/theme.css?v=41">
-	<script defer src="/static/js/custom/i18n.js?v=10"></script>
+	<link rel="stylesheet" href="/static/css/custom/theme.css?v=42">
+	<script defer src="/static/js/custom/i18n.js?v=11"></script>
 	<script defer src="/static/js/custom/theme.js?v=16"></script>
 
 	<!-- lazy loading of cloudflare -->
@@ -158,6 +178,8 @@
 			<a href="/privacy.html" data-i18n="footer_privacy">Privacy</a>
 			<span aria-hidden="true">&middot;</span>
 			<a href="/cookies.html" data-i18n="footer_cookies">Cookies</a>
+			<span aria-hidden="true">&middot;</span>
+			<a href="/dx-cluster.html" id="wc-guide-link" data-i18n="footer_guide">DX Cluster guide</a>
 		</div>
 
 		<div class="footer-copyright text-center py-3">

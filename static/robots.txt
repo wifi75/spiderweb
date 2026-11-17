@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /spotlist
+Disallow: /callsign?
+Disallow: /plot_get_
+Disallow: /csp-reports
+Disallow: /world.json
+
 Sitemap: https://webcluster.iu3cyv.eu/sitemap.xml

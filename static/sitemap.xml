@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://webcluster.iu3cyv.eu/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://webcluster.iu3cyv.eu/dx-cluster.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webcluster.iu3cyv.eu/dx-cluster.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://webcluster.iu3cyv.eu/guida-dx-cluster.html"/>
+  </url>
+  <url>
+    <loc>https://webcluster.iu3cyv.eu/guida-dx-cluster.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://webcluster.iu3cyv.eu/guida-dx-cluster.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webcluster.iu3cyv.eu/dx-cluster.html"/>
+  </url>
+  <url>
+    <loc>https://webcluster.iu3cyv.eu/propagation.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://webcluster.iu3cyv.eu/plots.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

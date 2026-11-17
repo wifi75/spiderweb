@@ -1,8 +1,36 @@
 {% extends "_base.html" %}
+{% set seo_title = 'DX Cluster IU3CYV - Live DX Spots for Radio Amateurs (FT8, CW, SSB)' %}
+{% set seo_desc = 'Live web DX Cluster: real-time DX spots on HF and VHF with band, mode and country. Filter FT8, CW and SSB, find DXpeditions, listen on WebSDR. Telnet cluster.iu3cyv.eu:7300.' %}
+{% set seo_path = '/' %}
 
 <head>
-	{% block title %}
-	<title>DX Cluster / DX Spot for Hamradio</title>
+	{% block seo_jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "IU3CYV DX Cluster",
+      "alternateName": ["Web DX Cluster IU3CYV", "cluster.iu3cyv.eu"],
+      "url": "{{ site_url }}/",
+      "inLanguage": ["en", "it", "pt", "es", "ru", "fr", "de", "ja", "zh"]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "IU3CYV DX Cluster",
+      "url": "{{ site_url }}/",
+      "applicationCategory": "CommunicationApplication",
+      "operatingSystem": "Any (web browser)",
+      "description": "Live web DX Cluster for radio amateurs: real-time DX spots on HF and VHF, filters by band and mode, WebSDR links and telnet access.",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}
+    }
+  ]
+}
+</script>
+{% endblock %}
+{% block title %}
+	<title>DX Cluster IU3CYV - Live DX Spots for Radio Amateurs (FT8, CW, SSB)</title>
 	{% endblock %}
 	{% block head %}
 	{{ super() }}
@@ -314,6 +342,26 @@
 		</table>
 	</div>
 </div>
+<section class="wc-about" aria-labelledby="wc-about-title">
+	<div class="wc-about-col" lang="en">
+		<h2 id="wc-about-title">Live DX Cluster for radio amateurs</h2>
+		<p>The IU3CYV DX Cluster shows <strong>DX spots</strong> in real time: frequency, band, mode (<strong>FT8</strong>,
+			FT4, <strong>CW</strong>, <strong>SSB</strong>, RTTY), country and comments reported by radio amateurs around
+			the world through <strong>DXSpider</strong>. Filter by HF band or VHF, by mode or by text, listen to a
+			signal on <strong>WebSDR</strong>, follow DXpeditions and check HF <a href="/propagation.html">propagation</a>.
+			Telnet access: <code>cluster.iu3cyv.eu:7300</code>.
+			<a href="/dx-cluster.html">Read the guide</a>.</p>
+	</div>
+	<div class="wc-about-col" lang="it">
+		<h2>DX Cluster in tempo reale per radioamatori</h2>
+		<p>Il DX Cluster IU3CYV mostra gli <strong>spot DX</strong> in tempo reale: frequenza, banda, modo
+			(<strong>FT8</strong>, FT4, <strong>CW</strong>, <strong>SSB</strong>, RTTY), paese e commenti segnalati dai
+			radioamatori di tutto il mondo tramite <strong>DXSpider</strong>. Filtra per banda HF o VHF, per modo o per
+			testo, ascolta un segnale su <strong>WebSDR</strong>, segui le DXpedition e controlla la
+			<a href="/propagation.html">propagazione</a> HF. Accesso telnet: <code>cluster.iu3cyv.eu:7300</code>.
+			<a href="/guida-dx-cluster.html">Leggi la guida</a>.</p>
+	</div>
+</section>
 {% endblock contents %}
 {% block app_data %}
 {{ super() }}

@@ -1,7 +1,7 @@
 {
-  "name": "IU1BOW Spiderweb v2.5.8",
-  "description": "DXCluser for ham radio by IU1BOW",
-  "short_name": "Spiderweb",
+  "name": "IU3CYV DX Cluster",
+  "description": "Live DX Cluster for radio amateurs: DX spots, bands, modes and WebSDR",
+  "short_name": "DX Cluster",
   "theme_color": "#f3b221",
   "background_color": "#2196f3",  
   "display": "standalone",

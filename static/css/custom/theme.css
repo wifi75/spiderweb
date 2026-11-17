@@ -933,3 +933,54 @@ html[data-bs-theme="light"] .wc-flag .fi {
 #spotsTable col:nth-child(5) { width: 5%; }
 #spotsTable col:nth-child(6) { width: 11%; }
 #spotsTable col:nth-child(8) { width: 8%; }
+
+/* testo descrittivo (home e guide) */
+.wc-about {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 24px;
+	margin: 28px 15px 8px;
+	padding: 18px 20px;
+	border: 1px solid var(--wc-line);
+	border-radius: 12px;
+	background: var(--wc-surface);
+	color: var(--wc-text);
+}
+.wc-about h2 {
+	font-size: 1.05rem;
+	font-weight: 700;
+	margin: 0 0 8px;
+	color: var(--wc-accent);
+}
+.wc-about p {
+	margin: 0;
+	font-size: 0.9rem;
+	line-height: 1.55;
+	color: var(--wc-muted);
+}
+.wc-about a, .wc-article a {
+	color: var(--wc-accent);
+}
+.wc-article {
+	max-width: 900px;
+	margin: 0 auto 24px;
+	line-height: 1.65;
+	color: var(--wc-text);
+}
+.wc-article h2 {
+	margin-top: 1.6em;
+	font-size: 1.35rem;
+	font-weight: 700;
+	color: var(--wc-accent);
+}
+.wc-article h3 {
+	margin-top: 1.1em;
+	font-size: 1.05rem;
+	font-weight: 700;
+}
+.wc-article pre {
+	padding: 10px 14px;
+	border-radius: 8px;
+	background: var(--wc-surface);
+	border: 1px solid var(--wc-line);
+}

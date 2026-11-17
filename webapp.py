@@ -391,6 +391,39 @@ def privacy():
     )
     return response
 
+# Public URL of the site, used for canonical links, Open Graph and structured data (SEO)
+SITE_URL = cfg.get("site_url", "https://webcluster.iu3cyv.eu")
+
+
+@app.context_processor
+def inject_site_url():
+    return {"site_url": SITE_URL}
+
+
+def render_guide(template):
+    return flask.Response(
+        render_template(
+            template,
+            inline_script_nonce=get_nonce(),
+            mycallsign=cfg["mycallsign"],
+            telnet=cfg["telnet"]["telnet_host"]+":"+cfg["telnet"]["telnet_port"],
+            mail=cfg["mail"],
+            menu_list=cfg["menu"]["menu_list"],
+            visits=len(visits),
+        )
+    )
+
+
+@app.route("/dx-cluster.html", methods=["GET"])
+def guide_en():
+    return render_guide("guide_en.html")
+
+
+@app.route("/guida-dx-cluster.html", methods=["GET"])
+def guide_it():
+    return render_guide("guide_it.html")
+
+
 @app.route("/robots.txt", methods=["GET","HEAD"])
 def robots():
     # Served as plain text from ./static/robots.txt (Google-friendly)

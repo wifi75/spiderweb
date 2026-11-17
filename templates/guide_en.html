@@ -1,0 +1,115 @@
+{% extends "_base.html" %}
+{% set seo_title = 'What is a DX Cluster? Guide to DX Spots, Bands and Telnet | IU3CYV' %}
+{% set seo_desc = 'What a DX Cluster is, how to read DX spots, which bands and modes (FT8, CW, SSB) to watch and how to connect by telnet to cluster.iu3cyv.eu:7300. A practical guide for radio amateurs.' %}
+{% set seo_path = '/dx-cluster.html' %}
+{% block title %}
+<title>What is a DX Cluster? Guide to DX Spots, Bands and Telnet | IU3CYV</title>
+{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block seo_alternates %}
+<link rel="alternate" hreflang="en" href="{{ site_url }}/dx-cluster.html">
+<link rel="alternate" hreflang="it" href="{{ site_url }}/guida-dx-cluster.html">
+<link rel="alternate" hreflang="x-default" href="{{ site_url }}/dx-cluster.html">
+{% endblock %}
+{% block seo_jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "What is a DX Cluster? A practical guide for radio amateurs",
+      "inLanguage": "en",
+      "mainEntityOfPage": "{{ site_url }}/dx-cluster.html",
+      "dateModified": "2026-11-17",
+      "publisher": {"@type": "Organization", "name": "IU3CYV DX Cluster", "url": "{{ site_url }}/"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What is a DX spot?",
+         "acceptedAnswer": {"@type": "Answer", "text": "A DX spot is a short report that a radio amateur sends to a DX cluster when they hear or work a distant station. It contains the frequency, the callsign of the DX station, the spotter, the time and a free comment such as the mode and the signal report."}},
+        {"@type": "Question", "name": "How do I connect to this DX cluster?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Open a telnet client and connect to cluster.iu3cyv.eu on port 7300, then log in with your callsign. You can also simply read the spots on the web page."}},
+        {"@type": "Question", "name": "Which frequencies are used for FT8?",
+         "acceptedAnswer": {"@type": "Answer", "text": "The common FT8 dial frequencies are 1.840, 3.573, 7.074, 10.136, 14.074, 18.100, 21.074, 24.915, 28.074 and 50.313 MHz."}},
+        {"@type": "Question", "name": "Is it free?",
+         "acceptedAnswer": {"@type": "Answer", "text": "Yes. The web DX cluster and the telnet access are free for radio amateurs."}}
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+{% block titles %}
+<h1 class="display-4 text-white">What is a DX Cluster?</h1>
+<p class="lead text-light">A practical guide for radio amateurs</p>
+{% endblock %}
+{% block filters %}
+{% endblock %}
+{% block contents %}
+<div class="col mr-3 px-2 wc-article" lang="en">
+	<p>A <strong>DX cluster</strong> is a network of nodes where radio amateurs share <strong>DX spots</strong> in real
+		time: short reports of distant stations that were just heard or worked. Instead of tuning across the whole band,
+		you read the list and go straight to the frequency where a rare country is on the air.
+		This site shows the spots collected by our <strong>DXSpider</strong> node in a live web page, with filters for
+		band, mode and text, and it is free to use.</p>
+	<p><a href="/">Open the live DX spots</a> &middot; <a href="/guida-dx-cluster.html" hreflang="it" lang="it">Guida in italiano</a></p>
+
+	<h2>What is a DX spot?</h2>
+	<p>A spot is a single line sent by an operator: the <strong>frequency</strong>, the <strong>callsign of the DX
+		station</strong>, the callsign of the <strong>spotter</strong>, the <strong>UTC time</strong> and a free
+		comment, usually the mode (CW, SSB, FT8, RTTY) and the signal report. The cluster adds the country of the
+		station, taken from its callsign prefix.</p>
+
+	<h2>How to read the spots table</h2>
+	<ul>
+		<li><strong>DE</strong>: the spotter, the station that reported the signal.</li>
+		<li><strong>Freq</strong>: the frequency in kHz, coloured by band (160 m to 6 m, VHF and above).</li>
+		<li><strong>Mode</strong>: CW, SSB, FT8, FT4, RTTY and other modes, guessed from the comment or from the
+			frequency. Click it to show only that mode.</li>
+		<li><strong>DX</strong>: the station that was heard. The radio-waves icon opens a WebSDR already tuned on the
+			frequency, so you can check whether the signal reaches you too.</li>
+		<li><strong>Country</strong> with its flag, <strong>Comments</strong> and <strong>UTC</strong> time.</li>
+	</ul>
+	<p>New spots are highlighted and, if you want, announced by a soft beep that you can switch off from the speaker
+		icon. The quick filter bar lets you pick the bands and modes you care about; the search box finds a callsign, a
+		country or a word in the comment.</p>
+
+	<h2>Bands and modes to watch</h2>
+	<p>On <strong>HF</strong> the best band changes during the day: 40, 30 and 20 metres are usually open in the
+		afternoon and evening, 15, 12 and 10 metres open around midday when the solar activity is good, 80 and 160
+		metres are the night bands. Digital modes concentrate on fixed frequencies; the common
+		<strong>FT8</strong> dial frequencies are 1.840, 3.573, 7.074, 10.136, 14.074, 18.100, 21.074, 24.915, 28.074
+		and 50.313 MHz. <strong>CW</strong> sits at the bottom of each band and <strong>SSB</strong> above it.
+		The <a href="/propagation.html">propagation page</a> shows solar flux and MUF to help you choose, and the
+		<a href="/plots.html">statistics page</a> shows which bands have the most spots by hour of the day.</p>
+
+	<h2>How to connect by telnet</h2>
+	<p>You can also use the cluster directly from a logging program or a terminal. Connect with a telnet client to
+		<code>cluster.iu3cyv.eu</code> on port <code>7300</code> and log in with your callsign:</p>
+	<pre><code>telnet cluster.iu3cyv.eu 7300</code></pre>
+	<p>Useful DXSpider commands: <code>sh/dx</code> shows the latest spots, <code>sh/dx on 20m</code> filters a band,
+		<code>dx 14074 CALLSIGN FT8</code> announces a spot of your own.</p>
+
+	<h2>DXpeditions</h2>
+	<p>Stations from rare entities are marked with a globe icon in the spots table when an announced DX operation is
+		known for that callsign (ADXO data from NG3K). Follow them early: DXpeditions are on the air for a limited time
+		and the pile-ups are largest in the first days.</p>
+
+	<h2>Frequently asked questions</h2>
+	<h3>Is it free?</h3>
+	<p>Yes, both the web DX cluster and the telnet access are free for radio amateurs.</p>
+	<h3>Do I need an account?</h3>
+	<p>No account is needed to read the spots. To send spots by telnet you log in with your callsign.</p>
+	<h3>Which software is behind it?</h3>
+	<p>The node runs <a href="http://www.dxcluster.org/" rel="noopener">DXSpider</a> and the web interface is based on
+		<a href="https://github.com/coulisse/spiderweb" rel="noopener">Spiderweb</a> by IU1BOW, with the changes of
+		<a href="https://github.com/wifi75/spiderweb" rel="noopener">this fork</a>.</p>
+</div>
+{% endblock %}
+{% block app_data %}
+{{ super() }}
+{% endblock %}
