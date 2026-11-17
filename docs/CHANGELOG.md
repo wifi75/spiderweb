@@ -1,4 +1,11 @@
 ### Change log
+Date: 17/11/2026
+Release: non ancora numerata (dopo v2.6.0, fork wifi75)
+
+- Added: SEO - titoli e descrizioni per pagina, canonical, Open Graph, dati strutturati, guide IT/EN con FAQ, testo descrittivo in home, sitemap e robots aggiornati
+- Changed: nome dell'app installabile (manifest) e pagina del nominativo esclusa dai motori di ricerca
+- Dettagli: [FORK.md](FORK.md#seo)
+___
 Date: 16/11/2026
 Release: v2.6.0 (fork wifi75, basato su v2.5.8)
 
