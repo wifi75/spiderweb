@@ -8,7 +8,7 @@
 
 	<meta charset="utf-8">
 	{% set _title = seo_title|default('DX Cluster IU3CYV - Live DX Spots for Radio Amateurs') %}
-	{% set _desc = seo_desc|default('Live web DX Cluster for radio amateurs: real-time DX spots on HF and VHF, filter by band and mode (FT8, CW, SSB), find DXpeditions and listen on WebSDR. Telnet access cluster.iu3cyv.eu:7300.') %}
+	{% set _desc = seo_desc|default('Live web DX Cluster for radio amateurs: real-time DX spots on HF and VHF, filter by band and mode (FT8, CW, SSB), find DXpeditions and listen on WebSDR. Telnet access cluster.iu3wjq.com:7300.') %}
 	{% set _url = site_url ~ (seo_path|default('/')) %}
 	<meta name="description" content="{{ _desc }}">
 	<meta name="author" content="IU3CYV DX Cluster">
@@ -130,8 +130,8 @@
 				{% endblock %}
 			</div>
 			<div class="wc-hero-links">
-				<a href="telnet://cluster.iu3cyv.eu:7300" class="wc-chip" title="Telnet access" data-i18n-title="telnet_title">
-					<i class="bi-terminal"></i> telnet cluster.iu3cyv.eu:7300
+				<a href="telnet://cluster.iu3wjq.com:7300" class="wc-chip" title="Telnet access" data-i18n-title="telnet_title">
+					<i class="bi-terminal"></i> telnet cluster.iu3wjq.com:7300
 				</a>
 				<a href="mailto:{{ mail }}?Subject=Connect%20my%20DxCluster%20node" target="_top" class="wc-chip" title="Connect your cluster" data-i18n-title="connect">
 					<i class="bi-envelope"></i> <span data-i18n="connect">Connect your cluster</span>

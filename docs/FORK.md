@@ -57,6 +57,7 @@ Google Search Console: proprietà `https://webcluster.iu3cyv.eu/` verificata con
 
 Il portale legge gli spot dal database MariaDB riempito da DXSpider (servizio `dxspider`, cartella `/spider`, ramo `mojo`).
 
+- **Indirizzo telnet pubblico:** `cluster.iu3wjq.com:7300` (dal 18/11/2026; `cluster.iu3cyv.eu` punta ancora allo stesso server, 93.48.229.84). Il sito web resta su `webcluster.iu3cyv.eu`.
 - **Versione installata:** DXSpider v1.57 build 687 (git `9b55f03f`), aggiornata il 17/11/2026 dalla build 536. Il numero si vede nel piè di pagina del portale e in "Statistiche".
 - **Sorgente:** il repository originale `scm.dxcluster.org` non risponde più; `origin` punta al mirror `https://github.com/EA3CV/dxspider.git` (commit di Dirk Koopman). Aggiornare con `git pull` in `/spider` e riavviare il nodo dalla console con `shutdown` (systemd lo rialza da solo).
 - **Variabile rinominata:** nelle versioni nuove `$main::regreq` è diventata `$main::reqreg`; è già aggiornata in `/spider/scripts/startup`.
